@@ -2,22 +2,18 @@
 
 ## Active
 
-### PPA-007
+### PPA-008
 
-Audit for hidden physical-promotion, validation, nature, or unified-field
-imports.
+Assemble the final conditional physical promotion attempt theorem certificate.
 
 Acceptance criteria:
 
-- audit descriptors are finite and bounded
-- hidden physical-promotion attempt success and physical-promotion imports are
-  rejected
-- hidden validation, empirical adequacy, review acceptance, reproduction
-  success, benchmark success, prediction success, and falsification success
-  imports are rejected
-- simulation-only promotion and fit-only calibration shortcuts are rejected
-- physical nature and unified-field-theory imports are rejected
-- Rust and Lean guards keep the full Paper 17 theorem open until later rungs
+- `PPA-001` through `PPA-007` are closed
+- the final certificate closes the Paper 17 theorem contract
+- every forbidden physical-promotion, validation, empirical-adequacy,
+  success, physical-nature, and unified-field claim remains false
+- Rust and Lean guards close the theorem only as a conditional
+  physical-promotion attempt interface theorem
 
 ## Closed
 
@@ -29,3 +25,5 @@ Acceptance criteria:
 - `PPA-004`: Finite decision, objection, and residual-risk descriptors.
 - `PPA-005`: Paper 16 certificate compatibility without acceptance or success.
 - `PPA-006`: Attempt stability, auditability, and rollback behavior.
+- `PPA-007`: No-hidden-promotion, validation, nature, or unified-field import
+  audit.

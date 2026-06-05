@@ -21,15 +21,17 @@
 - `PPA-006`: Attempt stability, auditability, and rollback behavior without
   claiming empirical stability, falsification success, review failure,
   physical-promotion failure, validation failure, or empirical inadequacy.
+- `PPA-007`: No-hidden-promotion, validation, nature, or unified-field-theory
+  import audit without closing promotion, validation, empirical adequacy,
+  physical nature, or unified-field claims.
 
 ## Active
 
-- `PPA-007`: Audit for hidden physical-promotion, validation, nature, or
-  unified-field-theory imports.
+- `PPA-008`: Assemble the final conditional physical promotion attempt theorem.
 
 ## Planned
 
-- `PPA-008`: Assemble the final conditional physical promotion attempt theorem.
+None after `PPA-008`.
 
 All planned rungs remain conditional and non-promoting unless explicitly
 closed by formal and Rust guards.

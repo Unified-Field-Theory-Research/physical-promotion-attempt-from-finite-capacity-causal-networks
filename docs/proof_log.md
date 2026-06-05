@@ -33,3 +33,10 @@
   not claim empirical stability, falsification success, review failure,
   physical-promotion failure, validation failure, or empirical inadequacy.
 - Recorded `PPA-007` as the active next obligation.
+- Closed `PPA-007` by defining a finite fail-closed hidden-import audit that
+  rejects hidden physical-promotion attempt success, physical promotion,
+  physical validation, empirical adequacy, review acceptance, reproduction
+  success, benchmark success, prediction success, falsification success,
+  simulation-only promotion, fit-only calibration, physical nature realization,
+  and unified-field-theory imports.
+- Recorded `PPA-008` as the active next obligation.

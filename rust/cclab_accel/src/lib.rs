@@ -30,6 +30,8 @@ pub const PAPER17_PPA005_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa005-paper16-compatibility";
 pub const PAPER17_PPA006_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa006-stability-audit-rollback";
+pub const PAPER17_PPA007_MARKER: &str =
+    "paper17-physical-promotion-attempt-ppa007-no-hidden-imports";
 pub const MAX_ATTEMPT_DESCRIPTOR_LEN: usize = 128;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -444,6 +446,81 @@ impl PPA006StabilityAuditRollback {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct PPA007NoHiddenImportAudit {
+    pub hidden_import_audit_descriptor: &'static str,
+    pub rejects_hidden_promotion_attempt_success: bool,
+    pub rejects_hidden_physical_promotion: bool,
+    pub rejects_hidden_physical_validation: bool,
+    pub rejects_hidden_empirical_adequacy: bool,
+    pub rejects_hidden_review_acceptance: bool,
+    pub rejects_hidden_reproduction_success: bool,
+    pub rejects_hidden_benchmark_success: bool,
+    pub rejects_hidden_prediction_success: bool,
+    pub rejects_hidden_falsification_success: bool,
+    pub rejects_simulation_only_promotion: bool,
+    pub rejects_fit_only_calibration: bool,
+    pub rejects_physical_nature_import: bool,
+    pub rejects_unified_field_theory_import: bool,
+    pub fail_closed_audit_row: bool,
+    pub auditable_audit_row: bool,
+    pub claim_boundary: Paper17ClaimBoundary,
+}
+
+impl PPA007NoHiddenImportAudit {
+    pub const fn canonical() -> Self {
+        Self {
+            hidden_import_audit_descriptor: "no-hidden-import-audit",
+            rejects_hidden_promotion_attempt_success: true,
+            rejects_hidden_physical_promotion: true,
+            rejects_hidden_physical_validation: true,
+            rejects_hidden_empirical_adequacy: true,
+            rejects_hidden_review_acceptance: true,
+            rejects_hidden_reproduction_success: true,
+            rejects_hidden_benchmark_success: true,
+            rejects_hidden_prediction_success: true,
+            rejects_hidden_falsification_success: true,
+            rejects_simulation_only_promotion: true,
+            rejects_fit_only_calibration: true,
+            rejects_physical_nature_import: true,
+            rejects_unified_field_theory_import: true,
+            fail_closed_audit_row: true,
+            auditable_audit_row: true,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
+    pub fn closes_ppa007(
+        &self,
+        attempt_record: &PPA002FinitePromotionAttemptRecord,
+        descriptors: &PPA003EligibilityEvidenceReviewDescriptors,
+        decision_row: &PPA004DecisionObjectionRiskDescriptors,
+        compatibility: &PPA005Paper16CertificateCompatibility,
+        rollback: &PPA006StabilityAuditRollback,
+    ) -> bool {
+        rollback.closes_ppa006(attempt_record, descriptors, decision_row, compatibility)
+            && bounded_descriptor(self.hidden_import_audit_descriptor)
+            && self.rejects_hidden_promotion_attempt_success
+            && self.rejects_hidden_physical_promotion
+            && self.rejects_hidden_physical_validation
+            && self.rejects_hidden_empirical_adequacy
+            && self.rejects_hidden_review_acceptance
+            && self.rejects_hidden_reproduction_success
+            && self.rejects_hidden_benchmark_success
+            && self.rejects_hidden_prediction_success
+            && self.rejects_hidden_falsification_success
+            && self.rejects_simulation_only_promotion
+            && self.rejects_fit_only_calibration
+            && self.rejects_physical_nature_import
+            && self.rejects_unified_field_theory_import
+            && self.fail_closed_audit_row
+            && self.auditable_audit_row
+            && self
+                .claim_boundary
+                .all_physical_promotion_and_success_claims_remain_false()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct PPA001UpstreamBinding {
     pub upstream_chain: &'static [UpstreamPaper],
     pub paper16_frozen_commit: &'static str,
@@ -616,6 +693,20 @@ impl Paper17SkeletonCertificate {
         }
     }
 
+    pub const fn ppa007_no_hidden_import_audit_closed() -> Self {
+        Self {
+            ppa001_upstream_binding_closed: true,
+            ppa002_finite_promotion_attempt_record_closed: true,
+            ppa003_eligibility_evidence_review_closed: true,
+            ppa004_decision_objection_risk_closed: true,
+            ppa005_paper16_certificate_compatibility_closed: true,
+            ppa006_stability_audit_rollback_closed: true,
+            ppa007_no_hidden_promotion_validation_nature_audit_closed: true,
+            ppa008_final_conditional_certificate_closed: false,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
     pub fn closes_paper17_theorem(&self) -> bool {
         self.ppa001_upstream_binding_closed
             && self.ppa002_finite_promotion_attempt_record_closed
@@ -655,6 +746,10 @@ pub fn paper17_ppa006_marker() -> &'static str {
     PAPER17_PPA006_MARKER
 }
 
+pub fn paper17_ppa007_marker() -> &'static str {
+    PAPER17_PPA007_MARKER
+}
+
 pub fn is_sha1_hex(value: &str) -> bool {
     value.len() == 40 && value.bytes().all(|byte| byte.is_ascii_hexdigit())
 }
@@ -668,5 +763,5 @@ pub fn bounded_descriptor(value: &str) -> bool {
 }
 
 pub fn active_obligation() -> &'static str {
-    "PPA-007"
+    "PPA-008"
 }

@@ -850,6 +850,169 @@ theorem ppa006_canonical_stability_audit_rollback_closed :
     ppa005CanonicalPaper16CertificateCompatibilityContract]
 
 /--
+`PPA-007` is the fail-closed audit that no hidden promotion, validation,
+physical-nature, or unified-field claim has been imported by the attempt
+interface. Closing this rung only closes absence of hidden imports; it does not
+promote the attempt or validate empirical adequacy.
+-/
+structure PPA007NoHiddenPromotionValidationNatureAuditContract where
+  ppa006StabilityAuditRollbackClosed : Prop
+  finiteHiddenImportAuditDescriptor : Prop
+  boundedHiddenImportAuditDescriptor : Prop
+  auditRejectsHiddenPromotionAttemptSuccess : Prop
+  auditRejectsHiddenPhysicalPromotion : Prop
+  auditRejectsHiddenPhysicalValidation : Prop
+  auditRejectsHiddenEmpiricalAdequacy : Prop
+  auditRejectsHiddenReviewAcceptance : Prop
+  auditRejectsHiddenReproductionSuccess : Prop
+  auditRejectsHiddenBenchmarkSuccess : Prop
+  auditRejectsHiddenPredictionSuccess : Prop
+  auditRejectsHiddenFalsificationSuccess : Prop
+  auditRejectsSimulationOnlyPromotion : Prop
+  auditRejectsFitOnlyCalibration : Prop
+  auditRejectsPhysicalNatureImport : Prop
+  auditRejectsUnifiedFieldTheoryImport : Prop
+  failClosedAuditRow : Prop
+  auditableAuditRow : Prop
+  noPhysicalPromotionAttemptSuccessClaim : Prop
+  noPhysicalPromotionClaim : Prop
+  noPhysicalValidationClaim : Prop
+  noEmpiricalAdequacyClaim : Prop
+  noReviewAcceptanceClaim : Prop
+  noReproductionSuccessClaim : Prop
+  noBenchmarkSuccessClaim : Prop
+  noPredictionSuccessClaim : Prop
+  noFalsificationSuccessClaim : Prop
+  noPhysicalNatureClaim : Prop
+  noUnifiedFieldTheoryClaim : Prop
+
+def PPA007NoHiddenPromotionValidationNatureAuditContract.closed
+    (c : PPA007NoHiddenPromotionValidationNatureAuditContract) : Prop :=
+  c.ppa006StabilityAuditRollbackClosed ∧
+  c.finiteHiddenImportAuditDescriptor ∧
+  c.boundedHiddenImportAuditDescriptor ∧
+  c.auditRejectsHiddenPromotionAttemptSuccess ∧
+  c.auditRejectsHiddenPhysicalPromotion ∧
+  c.auditRejectsHiddenPhysicalValidation ∧
+  c.auditRejectsHiddenEmpiricalAdequacy ∧
+  c.auditRejectsHiddenReviewAcceptance ∧
+  c.auditRejectsHiddenReproductionSuccess ∧
+  c.auditRejectsHiddenBenchmarkSuccess ∧
+  c.auditRejectsHiddenPredictionSuccess ∧
+  c.auditRejectsHiddenFalsificationSuccess ∧
+  c.auditRejectsSimulationOnlyPromotion ∧
+  c.auditRejectsFitOnlyCalibration ∧
+  c.auditRejectsPhysicalNatureImport ∧
+  c.auditRejectsUnifiedFieldTheoryImport ∧
+  c.failClosedAuditRow ∧
+  c.auditableAuditRow ∧
+  c.noPhysicalPromotionAttemptSuccessClaim ∧
+  c.noPhysicalPromotionClaim ∧
+  c.noPhysicalValidationClaim ∧
+  c.noEmpiricalAdequacyClaim ∧
+  c.noReviewAcceptanceClaim ∧
+  c.noReproductionSuccessClaim ∧
+  c.noBenchmarkSuccessClaim ∧
+  c.noPredictionSuccessClaim ∧
+  c.noFalsificationSuccessClaim ∧
+  c.noPhysicalNatureClaim ∧
+  c.noUnifiedFieldTheoryClaim
+
+theorem ppa007_no_hidden_promotion_validation_nature_audit_closed_from_fields
+    (c : PPA007NoHiddenPromotionValidationNatureAuditContract)
+    (hPPA006 : c.ppa006StabilityAuditRollbackClosed)
+    (hAuditFinite : c.finiteHiddenImportAuditDescriptor)
+    (hAuditBounded : c.boundedHiddenImportAuditDescriptor)
+    (hNoHiddenAttemptSuccess : c.auditRejectsHiddenPromotionAttemptSuccess)
+    (hNoHiddenPromotion : c.auditRejectsHiddenPhysicalPromotion)
+    (hNoHiddenValidation : c.auditRejectsHiddenPhysicalValidation)
+    (hNoHiddenEmpirical : c.auditRejectsHiddenEmpiricalAdequacy)
+    (hNoHiddenReview : c.auditRejectsHiddenReviewAcceptance)
+    (hNoHiddenReproduction : c.auditRejectsHiddenReproductionSuccess)
+    (hNoHiddenBenchmark : c.auditRejectsHiddenBenchmarkSuccess)
+    (hNoHiddenPrediction : c.auditRejectsHiddenPredictionSuccess)
+    (hNoHiddenFalsification : c.auditRejectsHiddenFalsificationSuccess)
+    (hNoSimulationShortcut : c.auditRejectsSimulationOnlyPromotion)
+    (hNoFitShortcut : c.auditRejectsFitOnlyCalibration)
+    (hNoNatureImport : c.auditRejectsPhysicalNatureImport)
+    (hNoUFTImport : c.auditRejectsUnifiedFieldTheoryImport)
+    (hFailClosed : c.failClosedAuditRow)
+    (hAuditable : c.auditableAuditRow)
+    (hNoAttemptSuccess : c.noPhysicalPromotionAttemptSuccessClaim)
+    (hNoPromotion : c.noPhysicalPromotionClaim)
+    (hNoValidation : c.noPhysicalValidationClaim)
+    (hNoEmpirical : c.noEmpiricalAdequacyClaim)
+    (hNoReviewAcceptance : c.noReviewAcceptanceClaim)
+    (hNoReproduction : c.noReproductionSuccessClaim)
+    (hNoBenchmark : c.noBenchmarkSuccessClaim)
+    (hNoPrediction : c.noPredictionSuccessClaim)
+    (hNoFalsification : c.noFalsificationSuccessClaim)
+    (hNoNature : c.noPhysicalNatureClaim)
+    (hNoUFT : c.noUnifiedFieldTheoryClaim) :
+    PPA007NoHiddenPromotionValidationNatureAuditContract.closed c := by
+  unfold PPA007NoHiddenPromotionValidationNatureAuditContract.closed
+  exact ⟨hPPA006, hAuditFinite, hAuditBounded, hNoHiddenAttemptSuccess,
+    hNoHiddenPromotion, hNoHiddenValidation, hNoHiddenEmpirical,
+    hNoHiddenReview, hNoHiddenReproduction, hNoHiddenBenchmark,
+    hNoHiddenPrediction, hNoHiddenFalsification, hNoSimulationShortcut,
+    hNoFitShortcut, hNoNatureImport, hNoUFTImport, hFailClosed, hAuditable,
+    hNoAttemptSuccess, hNoPromotion, hNoValidation, hNoEmpirical,
+    hNoReviewAcceptance, hNoReproduction, hNoBenchmark, hNoPrediction,
+    hNoFalsification, hNoNature, hNoUFT⟩
+
+def ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract :
+    PPA007NoHiddenPromotionValidationNatureAuditContract :=
+  {
+    ppa006StabilityAuditRollbackClosed :=
+      PPA006StabilityAuditRollbackContract.closed
+        ppa006CanonicalStabilityAuditRollbackContract,
+    finiteHiddenImportAuditDescriptor := True,
+    boundedHiddenImportAuditDescriptor := True,
+    auditRejectsHiddenPromotionAttemptSuccess := True,
+    auditRejectsHiddenPhysicalPromotion := True,
+    auditRejectsHiddenPhysicalValidation := True,
+    auditRejectsHiddenEmpiricalAdequacy := True,
+    auditRejectsHiddenReviewAcceptance := True,
+    auditRejectsHiddenReproductionSuccess := True,
+    auditRejectsHiddenBenchmarkSuccess := True,
+    auditRejectsHiddenPredictionSuccess := True,
+    auditRejectsHiddenFalsificationSuccess := True,
+    auditRejectsSimulationOnlyPromotion := True,
+    auditRejectsFitOnlyCalibration := True,
+    auditRejectsPhysicalNatureImport := True,
+    auditRejectsUnifiedFieldTheoryImport := True,
+    failClosedAuditRow := True,
+    auditableAuditRow := True,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem ppa007_canonical_no_hidden_promotion_validation_nature_audit_closed :
+    PPA007NoHiddenPromotionValidationNatureAuditContract.closed
+      ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract := by
+  unfold PPA007NoHiddenPromotionValidationNatureAuditContract.closed
+  unfold ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract,
+    PPA005Paper16CertificateCompatibilityContract.closed,
+    ppa005CanonicalPaper16CertificateCompatibilityContract,
+    PPA006StabilityAuditRollbackContract.closed,
+    ppa006CanonicalStabilityAuditRollbackContract]
+
+/--
 The full Paper 17 theorem stays closed only after a future final conditional
 certificate. `PPA-001` intentionally leaves that field false.
 -/
@@ -1147,5 +1310,61 @@ theorem paper17_ppa006_stability_audit_rollback_skeleton_does_not_close_physical
     ppa005CanonicalPaper16CertificateCompatibilityContract,
     PPA006StabilityAuditRollbackContract.closed,
     ppa006CanonicalStabilityAuditRollbackContract]
+
+def paper17PPA007NoHiddenImportAuditSkeletonContract :
+    Paper17PhysicalPromotionAttemptTheoremContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    ppa004DecisionObjectionRiskClosed :=
+      PPA004DecisionObjectionRiskContract.closed
+        ppa004CanonicalDecisionObjectionRiskContract,
+    ppa005Paper16CertificateCompatibilityClosed :=
+      PPA005Paper16CertificateCompatibilityContract.closed
+        ppa005CanonicalPaper16CertificateCompatibilityContract,
+    ppa006StabilityAuditRollbackClosed :=
+      PPA006StabilityAuditRollbackContract.closed
+        ppa006CanonicalStabilityAuditRollbackContract,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed :=
+      PPA007NoHiddenPromotionValidationNatureAuditContract.closed
+        ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract,
+    ppa008FinalConditionalCertificateClosed := False,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem paper17_ppa007_no_hidden_import_audit_skeleton_does_not_close_physical_promotion_attempt_theorem :
+    ¬ Paper17PhysicalPromotionAttemptTheoremContract.closed
+      paper17PPA007NoHiddenImportAuditSkeletonContract := by
+  unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
+  unfold paper17PPA007NoHiddenImportAuditSkeletonContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract,
+    PPA005Paper16CertificateCompatibilityContract.closed,
+    ppa005CanonicalPaper16CertificateCompatibilityContract,
+    PPA006StabilityAuditRollbackContract.closed,
+    ppa006CanonicalStabilityAuditRollbackContract,
+    PPA007NoHiddenPromotionValidationNatureAuditContract.closed,
+    ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract]
 
 end FiniteCapacity

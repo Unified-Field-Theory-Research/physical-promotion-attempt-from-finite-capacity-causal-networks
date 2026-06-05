@@ -3,10 +3,10 @@ use std::path::{Path, PathBuf};
 
 use cclab_accel::{
     active_obligation, bounded_descriptor, paper17_ppa002_marker, paper17_ppa003_marker,
-    paper17_ppa004_marker, paper17_ppa005_marker, paper17_ppa006_marker, paper17_skeleton_marker,
-    PPA001UpstreamBinding, PPA002FinitePromotionAttemptRecord,
+    paper17_ppa004_marker, paper17_ppa005_marker, paper17_ppa006_marker, paper17_ppa007_marker,
+    paper17_skeleton_marker, PPA001UpstreamBinding, PPA002FinitePromotionAttemptRecord,
     PPA003EligibilityEvidenceReviewDescriptors, PPA004DecisionObjectionRiskDescriptors,
-    PPA005Paper16CertificateCompatibility, PPA006StabilityAuditRollback,
+    PPA005Paper16CertificateCompatibility, PPA006StabilityAuditRollback, PPA007NoHiddenImportAudit,
     Paper17SkeletonCertificate, PAPER16_FINAL_CERTIFICATE, PAPER16_FORMAL_ENDPOINT,
     PAPER16_FROZEN_COMMIT,
 };
@@ -264,6 +264,60 @@ fn ppa006_skeleton_closes_stability_rung_but_not_theorem() {
 }
 
 #[test]
+fn ppa007_rejects_hidden_promotion_validation_nature_and_uft_imports() {
+    let attempt_record = PPA002FinitePromotionAttemptRecord::canonical();
+    let descriptors = PPA003EligibilityEvidenceReviewDescriptors::canonical();
+    let decision_row = PPA004DecisionObjectionRiskDescriptors::canonical();
+    let compatibility = PPA005Paper16CertificateCompatibility::canonical();
+    let rollback = PPA006StabilityAuditRollback::canonical();
+    let audit = PPA007NoHiddenImportAudit::canonical();
+    assert!(audit.closes_ppa007(
+        &attempt_record,
+        &descriptors,
+        &decision_row,
+        &compatibility,
+        &rollback
+    ));
+    assert!(bounded_descriptor(audit.hidden_import_audit_descriptor));
+    assert!(audit.rejects_hidden_promotion_attempt_success);
+    assert!(audit.rejects_hidden_physical_promotion);
+    assert!(audit.rejects_hidden_physical_validation);
+    assert!(audit.rejects_hidden_empirical_adequacy);
+    assert!(audit.rejects_hidden_review_acceptance);
+    assert!(audit.rejects_hidden_reproduction_success);
+    assert!(audit.rejects_hidden_benchmark_success);
+    assert!(audit.rejects_hidden_prediction_success);
+    assert!(audit.rejects_hidden_falsification_success);
+    assert!(audit.rejects_simulation_only_promotion);
+    assert!(audit.rejects_fit_only_calibration);
+    assert!(audit.rejects_physical_nature_import);
+    assert!(audit.rejects_unified_field_theory_import);
+    assert!(audit.fail_closed_audit_row);
+    assert!(audit.auditable_audit_row);
+    assert!(audit
+        .claim_boundary
+        .all_physical_promotion_and_success_claims_remain_false());
+    assert_eq!(
+        paper17_ppa007_marker(),
+        "paper17-physical-promotion-attempt-ppa007-no-hidden-imports"
+    );
+}
+
+#[test]
+fn ppa007_skeleton_closes_hidden_import_audit_but_not_theorem() {
+    let skeleton = Paper17SkeletonCertificate::ppa007_no_hidden_import_audit_closed();
+    assert!(skeleton.ppa001_upstream_binding_closed);
+    assert!(skeleton.ppa002_finite_promotion_attempt_record_closed);
+    assert!(skeleton.ppa003_eligibility_evidence_review_closed);
+    assert!(skeleton.ppa004_decision_objection_risk_closed);
+    assert!(skeleton.ppa005_paper16_certificate_compatibility_closed);
+    assert!(skeleton.ppa006_stability_audit_rollback_closed);
+    assert!(skeleton.ppa007_no_hidden_promotion_validation_nature_audit_closed);
+    assert!(!skeleton.ppa008_final_conditional_certificate_closed);
+    assert!(!skeleton.closes_paper17_theorem());
+}
+
+#[test]
 fn upstream_json_records_paper16_certificate_and_nonpromotion() {
     let upstream = read_repo_file("UPSTREAM-PAPERS.json");
     assert!(upstream.contains(PAPER16_FROZEN_COMMIT));
@@ -278,26 +332,28 @@ fn upstream_json_records_paper16_certificate_and_nonpromotion() {
 }
 
 #[test]
-fn docs_keep_ppa007_active_and_promotion_claims_false() {
+fn docs_keep_ppa008_active_and_promotion_claims_false() {
     let state = read_repo_file("GPD/state.json");
     let state_md = read_repo_file("GPD/STATE.md");
+    let normalized_state_md = state_md.split_whitespace().collect::<Vec<_>>().join(" ");
     let theorem = read_repo_file("docs/physical_promotion_attempt_theorem.md");
 
-    assert_eq!(active_obligation(), "PPA-007");
-    assert!(state.contains("\"active_obligation\": \"PPA-007\""));
+    assert_eq!(active_obligation(), "PPA-008");
+    assert!(state.contains("\"active_obligation\": \"PPA-008\""));
     assert!(state.contains("\"ppa002_finite_promotion_attempt_record_closed\": true"));
     assert!(state.contains("\"ppa003_eligibility_evidence_review_closed\": true"));
     assert!(state.contains("\"ppa004_decision_objection_risk_closed\": true"));
     assert!(state.contains("\"ppa005_paper16_certificate_compatibility_closed\": true"));
     assert!(state.contains("\"ppa006_stability_audit_rollback_closed\": true"));
+    assert!(state.contains("\"ppa007_no_hidden_promotion_validation_nature_audit_closed\": true"));
     assert!(state.contains("\"physical_promotion_attempt_theorem_closed\": false"));
     assert!(state.contains("\"physical_promotion_attempt_success_claim\": false"));
     assert!(state.contains("\"physical_promotion_claim\": false"));
     assert!(state.contains("\"physical_validation_claim\": false"));
     assert!(state.contains("\"empirical_adequacy_claim\": false"));
     assert!(state.contains("\"physical_nature_claim\": false"));
-    assert!(state_md.contains("theorem is not closed"));
-    assert!(theorem.contains("PPA-007"));
+    assert!(normalized_state_md.contains("theorem is not closed"));
+    assert!(theorem.contains("PPA-008"));
     assert!(theorem.contains("no unified field theory claim"));
 }
 

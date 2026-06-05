@@ -30,11 +30,13 @@ realization, or unified-field promotion.
 - `PPA-006`: Attempt stability, auditability, and rollback behavior without
   empirical stability, falsification success, review failure, promotion
   failure, validation failure, or empirical inadequacy.
+- `PPA-007`: No-hidden-promotion, validation, nature, or unified-field import
+  audit without closing promotion, validation, empirical adequacy, physical
+  nature, or unified-field claims.
 
 ## Active Rung
 
-- `PPA-007`: No-hidden-promotion, validation, nature, or unified-field import
-  audit.
+- `PPA-008`: Final conditional certificate.
 
 Closed boundary for `PPA-002`:
 
@@ -96,7 +98,7 @@ Closed boundary for `PPA-006`:
   or physical promotion failure
 - stability/audit/rollback rows preserve every non-promotion boundary
 
-Required boundary for `PPA-007`:
+Closed boundary for `PPA-007`:
 
 - audit rows explicitly scan for hidden promotion success
 - audit rows explicitly scan for hidden validation, empirical adequacy, review
@@ -108,9 +110,22 @@ Required boundary for `PPA-007`:
   imports
 - the audit closes only hidden-import absence, not physical promotion
 
+Required boundary for `PPA-008`:
+
+- all rungs `PPA-001` through `PPA-007` are closed
+- the final certificate closes only the conditional physical-promotion attempt
+  interface theorem
+- the final certificate preserves all non-promotion, non-validation,
+  non-success, non-nature, and non-unified-field boundaries
+- the final certificate does not claim physical promotion attempt success,
+  physical promotion, physical validation, empirical adequacy, review
+  acceptance, reproduction success, benchmark success, prediction success,
+  falsification success, physical nature realization, or unified field theory
+
 ## Planned Rungs
 
-- `PPA-008`: final conditional certificate
+None after `PPA-008`; the theorem remains open until the final conditional
+certificate is assembled.
 
 ## Residual Risk
 
