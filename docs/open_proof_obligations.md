@@ -2,20 +2,18 @@
 
 ## Active
 
-### PPA-003
+### PPA-004
 
-Define finite promotion eligibility, evidence-bundle, and review reference
-descriptors.
+Define finite decision, objection, and residual-risk descriptors.
 
 Acceptance criteria:
 
-- eligibility descriptors are finite and bounded
-- evidence-bundle descriptors are finite and bounded
-- review references are finite and bounded
-- descriptors state reference compatibility only, not success or acceptance
-- Paper 16 certificate references are consumed without review acceptance,
-  reproduction success, validation success, benchmark success, prediction
-  success, or falsification success
+- decision descriptors are finite and bounded
+- objection descriptors are finite and bounded
+- residual-risk descriptors are finite and bounded
+- descriptors state attempt bookkeeping only, not promotion decisions,
+  objection resolution, or risk discharge
+- Paper 16 certificate references remain reference-only
 - Rust and Lean guards keep the full Paper 17 theorem open until later rungs
 
 ## Closed
@@ -23,3 +21,5 @@ Acceptance criteria:
 - `PPA-001`: Upstream binding and claim-boundary scaffold.
 - `PPA-002`: Finite physical-promotion attempt records as bounded,
   auditable, non-promoting interface rows.
+- `PPA-003`: Finite promotion eligibility, evidence-bundle, and review
+  reference descriptors.

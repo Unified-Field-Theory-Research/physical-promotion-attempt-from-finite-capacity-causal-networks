@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
   "paper": 17,
-  "phase": 2,
-  "phase_name": "Finite Physical-Promotion Attempt Records",
-  "active_obligation": "PPA-003",
+  "phase": 3,
+  "phase_name": "Finite Eligibility Evidence And Review Descriptors",
+  "active_obligation": "PPA-004",
   "closed_obligations": [
     "PPA-001",
-    "PPA-002"
+    "PPA-002",
+    "PPA-003"
   ],
   "upstream_frozen_through_paper16": true,
   "paper16_frozen_commit": "8bb266493b1c53c776b2d39a47140794edc8935f",
@@ -15,7 +16,7 @@
   "paper17_claims": {
     "ppa001_upstream_binding_closed": true,
     "ppa002_finite_promotion_attempt_record_closed": true,
-    "ppa003_eligibility_evidence_review_closed": false,
+    "ppa003_eligibility_evidence_review_closed": true,
     "ppa004_decision_objection_risk_closed": false,
     "ppa005_paper16_certificate_compatibility_closed": false,
     "ppa006_stability_audit_rollback_closed": false,
@@ -45,5 +46,5 @@
     "physical_nature_claim": false,
     "unified_field_theory_claim": false
   },
-  "next_move": "PPA-003: define finite promotion eligibility, evidence-bundle, and review reference descriptors."
+  "next_move": "PPA-004: define finite decision, objection, and residual-risk descriptors."
 }

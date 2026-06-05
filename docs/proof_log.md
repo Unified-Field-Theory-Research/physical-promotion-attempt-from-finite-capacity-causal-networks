@@ -14,3 +14,8 @@
   eligibility, evidence-bundle, review-certificate, decision, objection,
   residual-risk, and audit-status descriptors.
 - Recorded `PPA-003` as the active next obligation.
+- Closed `PPA-003` by defining finite eligibility, evidence-bundle, and
+  review-reference descriptors as bounded, auditable labels that do not claim
+  promotion eligibility success, evidence sufficiency, review acceptance, or
+  reproduction success.
+- Recorded `PPA-004` as the active next obligation.

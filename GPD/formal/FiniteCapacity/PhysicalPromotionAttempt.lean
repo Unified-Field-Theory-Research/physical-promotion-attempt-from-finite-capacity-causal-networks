@@ -284,6 +284,144 @@ theorem ppa002_canonical_finite_promotion_attempt_record_closed :
   simp
 
 /--
+`PPA-003` refines the finite attempt row with descriptors for eligibility,
+evidence bundles, and review references. These descriptors are labels and
+references only: they do not certify eligibility success, evidence sufficiency,
+review acceptance, or reproduction success.
+-/
+structure PPA003EligibilityEvidenceReviewContract where
+  ppa002FinitePromotionAttemptRecordClosed : Prop
+  finiteEligibilityDescriptor : Prop
+  boundedEligibilityDescriptor : Prop
+  eligibilityDescriptorIsNotPromotionFinding : Prop
+  finiteEvidenceBundleDescriptor : Prop
+  boundedEvidenceBundleDescriptor : Prop
+  evidenceDescriptorIsNotSufficiencyClaim : Prop
+  finiteReviewReferenceDescriptor : Prop
+  boundedReviewReferenceDescriptor : Prop
+  reviewReferenceIsNotAcceptanceClaim : Prop
+  paper16CertificateReferencedOnly : Prop
+  localToAttemptRecord : Prop
+  auditableDescriptorRow : Prop
+  rollbackCompatibleDescriptorRow : Prop
+  noPhysicalPromotionAttemptSuccessClaim : Prop
+  noPhysicalPromotionClaim : Prop
+  noPhysicalValidationClaim : Prop
+  noEmpiricalAdequacyClaim : Prop
+  noReviewAcceptanceClaim : Prop
+  noReproductionSuccessClaim : Prop
+  noBenchmarkSuccessClaim : Prop
+  noPredictionSuccessClaim : Prop
+  noFalsificationSuccessClaim : Prop
+  noPhysicalNatureClaim : Prop
+  noUnifiedFieldTheoryClaim : Prop
+
+def PPA003EligibilityEvidenceReviewContract.closed
+    (c : PPA003EligibilityEvidenceReviewContract) : Prop :=
+  c.ppa002FinitePromotionAttemptRecordClosed ∧
+  c.finiteEligibilityDescriptor ∧
+  c.boundedEligibilityDescriptor ∧
+  c.eligibilityDescriptorIsNotPromotionFinding ∧
+  c.finiteEvidenceBundleDescriptor ∧
+  c.boundedEvidenceBundleDescriptor ∧
+  c.evidenceDescriptorIsNotSufficiencyClaim ∧
+  c.finiteReviewReferenceDescriptor ∧
+  c.boundedReviewReferenceDescriptor ∧
+  c.reviewReferenceIsNotAcceptanceClaim ∧
+  c.paper16CertificateReferencedOnly ∧
+  c.localToAttemptRecord ∧
+  c.auditableDescriptorRow ∧
+  c.rollbackCompatibleDescriptorRow ∧
+  c.noPhysicalPromotionAttemptSuccessClaim ∧
+  c.noPhysicalPromotionClaim ∧
+  c.noPhysicalValidationClaim ∧
+  c.noEmpiricalAdequacyClaim ∧
+  c.noReviewAcceptanceClaim ∧
+  c.noReproductionSuccessClaim ∧
+  c.noBenchmarkSuccessClaim ∧
+  c.noPredictionSuccessClaim ∧
+  c.noFalsificationSuccessClaim ∧
+  c.noPhysicalNatureClaim ∧
+  c.noUnifiedFieldTheoryClaim
+
+theorem ppa003_eligibility_evidence_review_closed_from_fields
+    (c : PPA003EligibilityEvidenceReviewContract)
+    (hPPA002 : c.ppa002FinitePromotionAttemptRecordClosed)
+    (hEligibilityFinite : c.finiteEligibilityDescriptor)
+    (hEligibilityBounded : c.boundedEligibilityDescriptor)
+    (hEligibilityNonPromoting : c.eligibilityDescriptorIsNotPromotionFinding)
+    (hEvidenceFinite : c.finiteEvidenceBundleDescriptor)
+    (hEvidenceBounded : c.boundedEvidenceBundleDescriptor)
+    (hEvidenceNoSufficiency : c.evidenceDescriptorIsNotSufficiencyClaim)
+    (hReviewFinite : c.finiteReviewReferenceDescriptor)
+    (hReviewBounded : c.boundedReviewReferenceDescriptor)
+    (hReviewNoAcceptance : c.reviewReferenceIsNotAcceptanceClaim)
+    (hPaper16ReferenceOnly : c.paper16CertificateReferencedOnly)
+    (hLocal : c.localToAttemptRecord)
+    (hAuditable : c.auditableDescriptorRow)
+    (hRollback : c.rollbackCompatibleDescriptorRow)
+    (hNoAttemptSuccess : c.noPhysicalPromotionAttemptSuccessClaim)
+    (hNoPromotion : c.noPhysicalPromotionClaim)
+    (hNoValidation : c.noPhysicalValidationClaim)
+    (hNoEmpirical : c.noEmpiricalAdequacyClaim)
+    (hNoReviewAcceptance : c.noReviewAcceptanceClaim)
+    (hNoReproduction : c.noReproductionSuccessClaim)
+    (hNoBenchmark : c.noBenchmarkSuccessClaim)
+    (hNoPrediction : c.noPredictionSuccessClaim)
+    (hNoFalsification : c.noFalsificationSuccessClaim)
+    (hNoNature : c.noPhysicalNatureClaim)
+    (hNoUFT : c.noUnifiedFieldTheoryClaim) :
+    PPA003EligibilityEvidenceReviewContract.closed c := by
+  unfold PPA003EligibilityEvidenceReviewContract.closed
+  exact ⟨hPPA002, hEligibilityFinite, hEligibilityBounded,
+    hEligibilityNonPromoting, hEvidenceFinite, hEvidenceBounded,
+    hEvidenceNoSufficiency, hReviewFinite, hReviewBounded, hReviewNoAcceptance,
+    hPaper16ReferenceOnly, hLocal, hAuditable, hRollback, hNoAttemptSuccess,
+    hNoPromotion, hNoValidation, hNoEmpirical, hNoReviewAcceptance,
+    hNoReproduction, hNoBenchmark, hNoPrediction, hNoFalsification, hNoNature,
+    hNoUFT⟩
+
+def ppa003CanonicalEligibilityEvidenceReviewContract :
+    PPA003EligibilityEvidenceReviewContract :=
+  {
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    finiteEligibilityDescriptor := True,
+    boundedEligibilityDescriptor := True,
+    eligibilityDescriptorIsNotPromotionFinding := True,
+    finiteEvidenceBundleDescriptor := True,
+    boundedEvidenceBundleDescriptor := True,
+    evidenceDescriptorIsNotSufficiencyClaim := True,
+    finiteReviewReferenceDescriptor := True,
+    boundedReviewReferenceDescriptor := True,
+    reviewReferenceIsNotAcceptanceClaim := True,
+    paper16CertificateReferencedOnly := True,
+    localToAttemptRecord := True,
+    auditableDescriptorRow := True,
+    rollbackCompatibleDescriptorRow := True,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem ppa003_canonical_eligibility_evidence_review_closed :
+    PPA003EligibilityEvidenceReviewContract.closed
+      ppa003CanonicalEligibilityEvidenceReviewContract := by
+  unfold PPA003EligibilityEvidenceReviewContract.closed
+  unfold ppa003CanonicalEligibilityEvidenceReviewContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract]
+
+/--
 The full Paper 17 theorem stays closed only after a future final conditional
 certificate. `PPA-001` intentionally leaves that field false.
 -/
@@ -397,5 +535,45 @@ theorem paper17_ppa002_record_skeleton_does_not_close_physical_promotion_attempt
   unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
   unfold paper17PPA002RecordSkeletonContract
   simp
+
+def paper17PPA003DescriptorSkeletonContract :
+    Paper17PhysicalPromotionAttemptTheoremContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    ppa004DecisionObjectionRiskClosed := False,
+    ppa005Paper16CertificateCompatibilityClosed := False,
+    ppa006StabilityAuditRollbackClosed := False,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed := False,
+    ppa008FinalConditionalCertificateClosed := False,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem paper17_ppa003_descriptor_skeleton_does_not_close_physical_promotion_attempt_theorem :
+    ¬ Paper17PhysicalPromotionAttemptTheoremContract.closed
+      paper17PPA003DescriptorSkeletonContract := by
+  unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
+  unfold paper17PPA003DescriptorSkeletonContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract]
 
 end FiniteCapacity

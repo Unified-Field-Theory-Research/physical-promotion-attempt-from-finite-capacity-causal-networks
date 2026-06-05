@@ -9,15 +9,16 @@
   physical promotion success, physical validation, empirical adequacy, review
   acceptance, reproduction success, benchmark success, prediction success,
   falsification success, simulation-only promotion, or fit-only calibration.
+- `PPA-003`: Finite promotion eligibility, evidence-bundle, and review
+  reference descriptors without importing eligibility success, evidence
+  sufficiency, review acceptance, reproduction success, or validation success.
 
 ## Active
 
-- `PPA-003`: Define finite promotion eligibility, evidence-bundle, and review
-  reference descriptors.
+- `PPA-004`: Define finite decision, objection, and residual-risk descriptors.
 
 ## Planned
 
-- `PPA-004`: Define finite decision, objection, and residual-risk descriptors.
 - `PPA-005`: Define compatibility with Paper 16 review/reproduction
   certificates without claiming acceptance or success.
 - `PPA-006`: Define attempt stability, auditability, and rollback behavior.
