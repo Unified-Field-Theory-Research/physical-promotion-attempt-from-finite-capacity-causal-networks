@@ -48,8 +48,9 @@ auditable, non-promoting interface rows. `PPA-003` defines finite promotion
 eligibility, evidence-bundle, and review reference descriptors. `PPA-004`
 defines finite decision, objection, and residual-risk descriptors. `PPA-005`
 defines Paper 16 certificate compatibility without acceptance or success.
-`PPA-006` is the active next obligation: define attempt stability,
-auditability, and rollback behavior.
+`PPA-006` defines attempt stability, auditability, and rollback behavior.
+`PPA-007` is the active next obligation: audit for hidden physical-promotion,
+validation, nature, or unified-field-theory imports.
 
 This does not prove physical promotion attempt success, physical promotion,
 physical validation, empirical adequacy, review acceptance, reproduction

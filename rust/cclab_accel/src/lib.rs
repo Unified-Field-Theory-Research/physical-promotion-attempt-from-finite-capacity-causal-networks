@@ -28,6 +28,8 @@ pub const PAPER17_PPA004_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa004-decision-objection-risk";
 pub const PAPER17_PPA005_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa005-paper16-compatibility";
+pub const PAPER17_PPA006_MARKER: &str =
+    "paper17-physical-promotion-attempt-ppa006-stability-audit-rollback";
 pub const MAX_ATTEMPT_DESCRIPTOR_LEN: usize = 128;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -383,6 +385,65 @@ impl PPA005Paper16CertificateCompatibility {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct PPA006StabilityAuditRollback {
+    pub stability_descriptor: &'static str,
+    pub audit_descriptor: &'static str,
+    pub rollback_descriptor: &'static str,
+    pub interface_stability_is_not_empirical_stability: bool,
+    pub audit_replayable_from_finite_rows: bool,
+    pub rollback_local_to_attempt_interface: bool,
+    pub rollback_is_not_falsification_success: bool,
+    pub rollback_is_not_review_failure: bool,
+    pub rollback_is_not_physical_promotion_failure: bool,
+    pub rollback_is_not_validation_failure: bool,
+    pub auditable_rollback_row: bool,
+    pub claim_boundary: Paper17ClaimBoundary,
+}
+
+impl PPA006StabilityAuditRollback {
+    pub const fn canonical() -> Self {
+        Self {
+            stability_descriptor: "interface-stability-descriptor",
+            audit_descriptor: "finite-audit-replay-descriptor",
+            rollback_descriptor: "local-rollback-descriptor",
+            interface_stability_is_not_empirical_stability: true,
+            audit_replayable_from_finite_rows: true,
+            rollback_local_to_attempt_interface: true,
+            rollback_is_not_falsification_success: true,
+            rollback_is_not_review_failure: true,
+            rollback_is_not_physical_promotion_failure: true,
+            rollback_is_not_validation_failure: true,
+            auditable_rollback_row: true,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
+    pub fn closes_ppa006(
+        &self,
+        attempt_record: &PPA002FinitePromotionAttemptRecord,
+        descriptors: &PPA003EligibilityEvidenceReviewDescriptors,
+        decision_row: &PPA004DecisionObjectionRiskDescriptors,
+        compatibility: &PPA005Paper16CertificateCompatibility,
+    ) -> bool {
+        compatibility.closes_ppa005(attempt_record, descriptors, decision_row)
+            && bounded_descriptor(self.stability_descriptor)
+            && bounded_descriptor(self.audit_descriptor)
+            && bounded_descriptor(self.rollback_descriptor)
+            && self.interface_stability_is_not_empirical_stability
+            && self.audit_replayable_from_finite_rows
+            && self.rollback_local_to_attempt_interface
+            && self.rollback_is_not_falsification_success
+            && self.rollback_is_not_review_failure
+            && self.rollback_is_not_physical_promotion_failure
+            && self.rollback_is_not_validation_failure
+            && self.auditable_rollback_row
+            && self
+                .claim_boundary
+                .all_physical_promotion_and_success_claims_remain_false()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct PPA001UpstreamBinding {
     pub upstream_chain: &'static [UpstreamPaper],
     pub paper16_frozen_commit: &'static str,
@@ -541,6 +602,20 @@ impl Paper17SkeletonCertificate {
         }
     }
 
+    pub const fn ppa006_stability_audit_rollback_closed() -> Self {
+        Self {
+            ppa001_upstream_binding_closed: true,
+            ppa002_finite_promotion_attempt_record_closed: true,
+            ppa003_eligibility_evidence_review_closed: true,
+            ppa004_decision_objection_risk_closed: true,
+            ppa005_paper16_certificate_compatibility_closed: true,
+            ppa006_stability_audit_rollback_closed: true,
+            ppa007_no_hidden_promotion_validation_nature_audit_closed: false,
+            ppa008_final_conditional_certificate_closed: false,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
     pub fn closes_paper17_theorem(&self) -> bool {
         self.ppa001_upstream_binding_closed
             && self.ppa002_finite_promotion_attempt_record_closed
@@ -576,6 +651,10 @@ pub fn paper17_ppa005_marker() -> &'static str {
     PAPER17_PPA005_MARKER
 }
 
+pub fn paper17_ppa006_marker() -> &'static str {
+    PAPER17_PPA006_MARKER
+}
+
 pub fn is_sha1_hex(value: &str) -> bool {
     value.len() == 40 && value.bytes().all(|byte| byte.is_ascii_hexdigit())
 }
@@ -589,5 +668,5 @@ pub fn bounded_descriptor(value: &str) -> bool {
 }
 
 pub fn active_obligation() -> &'static str {
-    "PPA-006"
+    "PPA-007"
 }

@@ -27,10 +27,14 @@ realization, or unified-field promotion.
 - `PPA-005`: Paper 16 certificate compatibility as finite, reference-only rows
   without review acceptance, reproduction success, validation success,
   benchmark success, prediction success, or falsification success.
+- `PPA-006`: Attempt stability, auditability, and rollback behavior without
+  empirical stability, falsification success, review failure, promotion
+  failure, validation failure, or empirical inadequacy.
 
 ## Active Rung
 
-- `PPA-006`: Attempt stability, auditability, and rollback behavior.
+- `PPA-007`: No-hidden-promotion, validation, nature, or unified-field import
+  audit.
 
 Closed boundary for `PPA-002`:
 
@@ -83,7 +87,7 @@ Closed boundary for `PPA-005`:
   conditional and non-successful
 - all compatibility rows remain bounded, auditable, and rollback-compatible
 
-Required boundary for `PPA-006`:
+Closed boundary for `PPA-006`:
 
 - attempt stability is finite interface stability, not empirical stability
 - auditability records are finite and replayable from attempt rows
@@ -92,10 +96,20 @@ Required boundary for `PPA-006`:
   or physical promotion failure
 - stability/audit/rollback rows preserve every non-promotion boundary
 
+Required boundary for `PPA-007`:
+
+- audit rows explicitly scan for hidden promotion success
+- audit rows explicitly scan for hidden validation, empirical adequacy, review
+  acceptance, reproduction success, benchmark success, prediction success, and
+  falsification success
+- audit rows explicitly scan for simulation-only promotion and fit-only
+  calibration shortcuts
+- audit rows explicitly scan for physical nature and unified-field-theory
+  imports
+- the audit closes only hidden-import absence, not physical promotion
+
 ## Planned Rungs
 
-- `PPA-007`: no-hidden-promotion, validation, nature, or unified-field import
-  audit
 - `PPA-008`: final conditional certificate
 
 ## Residual Risk

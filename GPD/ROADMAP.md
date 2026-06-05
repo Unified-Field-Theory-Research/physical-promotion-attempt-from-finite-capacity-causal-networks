@@ -18,15 +18,17 @@
 - `PPA-005`: Paper 16 review/reproduction certificate compatibility without
   claiming review acceptance, reproduction success, validation success,
   benchmark success, prediction success, or falsification success.
+- `PPA-006`: Attempt stability, auditability, and rollback behavior without
+  claiming empirical stability, falsification success, review failure,
+  physical-promotion failure, validation failure, or empirical inadequacy.
 
 ## Active
 
-- `PPA-006`: Define attempt stability, auditability, and rollback behavior.
+- `PPA-007`: Audit for hidden physical-promotion, validation, nature, or
+  unified-field-theory imports.
 
 ## Planned
 
-- `PPA-007`: Audit for hidden physical-promotion, validation, nature, or
-  unified-field-theory imports.
 - `PPA-008`: Assemble the final conditional physical promotion attempt theorem.
 
 All planned rungs remain conditional and non-promoting unless explicitly

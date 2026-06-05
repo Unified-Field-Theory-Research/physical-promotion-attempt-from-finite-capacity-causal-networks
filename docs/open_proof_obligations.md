@@ -2,18 +2,21 @@
 
 ## Active
 
-### PPA-006
+### PPA-007
 
-Define attempt stability, auditability, and rollback behavior.
+Audit for hidden physical-promotion, validation, nature, or unified-field
+imports.
 
 Acceptance criteria:
 
-- stability descriptors are finite and bounded
-- audit descriptors are finite, replayable, and bounded
-- rollback descriptors are finite, local, and bounded
-- rollback behavior does not claim falsification success, review failure, or
-  physical-promotion failure
-- stability/audit/rollback rows preserve every non-promotion claim boundary
+- audit descriptors are finite and bounded
+- hidden physical-promotion attempt success and physical-promotion imports are
+  rejected
+- hidden validation, empirical adequacy, review acceptance, reproduction
+  success, benchmark success, prediction success, and falsification success
+  imports are rejected
+- simulation-only promotion and fit-only calibration shortcuts are rejected
+- physical nature and unified-field-theory imports are rejected
 - Rust and Lean guards keep the full Paper 17 theorem open until later rungs
 
 ## Closed
@@ -25,3 +28,4 @@ Acceptance criteria:
   reference descriptors.
 - `PPA-004`: Finite decision, objection, and residual-risk descriptors.
 - `PPA-005`: Paper 16 certificate compatibility without acceptance or success.
+- `PPA-006`: Attempt stability, auditability, and rollback behavior.

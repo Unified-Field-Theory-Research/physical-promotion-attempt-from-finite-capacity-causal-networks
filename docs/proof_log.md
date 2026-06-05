@@ -28,3 +28,8 @@
   review acceptance, reproduction success, validation success, benchmark
   success, prediction success, or falsification success.
 - Recorded `PPA-006` as the active next obligation.
+- Closed `PPA-006` by defining finite stability, audit, and rollback
+  descriptors with replayable audit rows and local rollback behavior that does
+  not claim empirical stability, falsification success, review failure,
+  physical-promotion failure, validation failure, or empirical inadequacy.
+- Recorded `PPA-007` as the active next obligation.

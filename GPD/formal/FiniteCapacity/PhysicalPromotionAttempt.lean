@@ -701,6 +701,155 @@ theorem ppa005_canonical_paper16_certificate_compatibility_closed :
     ppa004CanonicalDecisionObjectionRiskContract]
 
 /--
+`PPA-006` adds finite attempt stability, auditability, and rollback behavior.
+The stability is interface stability only; rollback is local bookkeeping and
+does not assert falsification success, review failure, physical-promotion
+failure, validation failure, or empirical inadequacy.
+-/
+structure PPA006StabilityAuditRollbackContract where
+  ppa005Paper16CertificateCompatibilityClosed : Prop
+  finiteStabilityDescriptor : Prop
+  boundedStabilityDescriptor : Prop
+  interfaceStabilityIsNotEmpiricalStability : Prop
+  finiteAuditDescriptor : Prop
+  boundedAuditDescriptor : Prop
+  auditReplayableFromFiniteRows : Prop
+  finiteRollbackDescriptor : Prop
+  boundedRollbackDescriptor : Prop
+  rollbackLocalToAttemptInterface : Prop
+  rollbackIsNotFalsificationSuccess : Prop
+  rollbackIsNotReviewFailure : Prop
+  rollbackIsNotPhysicalPromotionFailure : Prop
+  rollbackIsNotValidationFailure : Prop
+  auditableRollbackRow : Prop
+  noPhysicalPromotionAttemptSuccessClaim : Prop
+  noPhysicalPromotionClaim : Prop
+  noPhysicalValidationClaim : Prop
+  noEmpiricalAdequacyClaim : Prop
+  noReviewAcceptanceClaim : Prop
+  noReproductionSuccessClaim : Prop
+  noBenchmarkSuccessClaim : Prop
+  noPredictionSuccessClaim : Prop
+  noFalsificationSuccessClaim : Prop
+  noPhysicalNatureClaim : Prop
+  noUnifiedFieldTheoryClaim : Prop
+
+def PPA006StabilityAuditRollbackContract.closed
+    (c : PPA006StabilityAuditRollbackContract) : Prop :=
+  c.ppa005Paper16CertificateCompatibilityClosed ∧
+  c.finiteStabilityDescriptor ∧
+  c.boundedStabilityDescriptor ∧
+  c.interfaceStabilityIsNotEmpiricalStability ∧
+  c.finiteAuditDescriptor ∧
+  c.boundedAuditDescriptor ∧
+  c.auditReplayableFromFiniteRows ∧
+  c.finiteRollbackDescriptor ∧
+  c.boundedRollbackDescriptor ∧
+  c.rollbackLocalToAttemptInterface ∧
+  c.rollbackIsNotFalsificationSuccess ∧
+  c.rollbackIsNotReviewFailure ∧
+  c.rollbackIsNotPhysicalPromotionFailure ∧
+  c.rollbackIsNotValidationFailure ∧
+  c.auditableRollbackRow ∧
+  c.noPhysicalPromotionAttemptSuccessClaim ∧
+  c.noPhysicalPromotionClaim ∧
+  c.noPhysicalValidationClaim ∧
+  c.noEmpiricalAdequacyClaim ∧
+  c.noReviewAcceptanceClaim ∧
+  c.noReproductionSuccessClaim ∧
+  c.noBenchmarkSuccessClaim ∧
+  c.noPredictionSuccessClaim ∧
+  c.noFalsificationSuccessClaim ∧
+  c.noPhysicalNatureClaim ∧
+  c.noUnifiedFieldTheoryClaim
+
+theorem ppa006_stability_audit_rollback_closed_from_fields
+    (c : PPA006StabilityAuditRollbackContract)
+    (hPPA005 : c.ppa005Paper16CertificateCompatibilityClosed)
+    (hStabilityFinite : c.finiteStabilityDescriptor)
+    (hStabilityBounded : c.boundedStabilityDescriptor)
+    (hStabilityNotEmpirical : c.interfaceStabilityIsNotEmpiricalStability)
+    (hAuditFinite : c.finiteAuditDescriptor)
+    (hAuditBounded : c.boundedAuditDescriptor)
+    (hAuditReplay : c.auditReplayableFromFiniteRows)
+    (hRollbackFinite : c.finiteRollbackDescriptor)
+    (hRollbackBounded : c.boundedRollbackDescriptor)
+    (hRollbackLocal : c.rollbackLocalToAttemptInterface)
+    (hRollbackNoFalsification : c.rollbackIsNotFalsificationSuccess)
+    (hRollbackNoReviewFailure : c.rollbackIsNotReviewFailure)
+    (hRollbackNoPromotionFailure : c.rollbackIsNotPhysicalPromotionFailure)
+    (hRollbackNoValidationFailure : c.rollbackIsNotValidationFailure)
+    (hAuditableRollback : c.auditableRollbackRow)
+    (hNoAttemptSuccess : c.noPhysicalPromotionAttemptSuccessClaim)
+    (hNoPromotion : c.noPhysicalPromotionClaim)
+    (hNoValidation : c.noPhysicalValidationClaim)
+    (hNoEmpirical : c.noEmpiricalAdequacyClaim)
+    (hNoReviewAcceptance : c.noReviewAcceptanceClaim)
+    (hNoReproduction : c.noReproductionSuccessClaim)
+    (hNoBenchmark : c.noBenchmarkSuccessClaim)
+    (hNoPrediction : c.noPredictionSuccessClaim)
+    (hNoFalsification : c.noFalsificationSuccessClaim)
+    (hNoNature : c.noPhysicalNatureClaim)
+    (hNoUFT : c.noUnifiedFieldTheoryClaim) :
+    PPA006StabilityAuditRollbackContract.closed c := by
+  unfold PPA006StabilityAuditRollbackContract.closed
+  exact ⟨hPPA005, hStabilityFinite, hStabilityBounded,
+    hStabilityNotEmpirical, hAuditFinite, hAuditBounded, hAuditReplay,
+    hRollbackFinite, hRollbackBounded, hRollbackLocal,
+    hRollbackNoFalsification, hRollbackNoReviewFailure,
+    hRollbackNoPromotionFailure, hRollbackNoValidationFailure,
+    hAuditableRollback, hNoAttemptSuccess, hNoPromotion, hNoValidation,
+    hNoEmpirical, hNoReviewAcceptance, hNoReproduction, hNoBenchmark,
+    hNoPrediction, hNoFalsification, hNoNature, hNoUFT⟩
+
+def ppa006CanonicalStabilityAuditRollbackContract :
+    PPA006StabilityAuditRollbackContract :=
+  {
+    ppa005Paper16CertificateCompatibilityClosed :=
+      PPA005Paper16CertificateCompatibilityContract.closed
+        ppa005CanonicalPaper16CertificateCompatibilityContract,
+    finiteStabilityDescriptor := True,
+    boundedStabilityDescriptor := True,
+    interfaceStabilityIsNotEmpiricalStability := True,
+    finiteAuditDescriptor := True,
+    boundedAuditDescriptor := True,
+    auditReplayableFromFiniteRows := True,
+    finiteRollbackDescriptor := True,
+    boundedRollbackDescriptor := True,
+    rollbackLocalToAttemptInterface := True,
+    rollbackIsNotFalsificationSuccess := True,
+    rollbackIsNotReviewFailure := True,
+    rollbackIsNotPhysicalPromotionFailure := True,
+    rollbackIsNotValidationFailure := True,
+    auditableRollbackRow := True,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem ppa006_canonical_stability_audit_rollback_closed :
+    PPA006StabilityAuditRollbackContract.closed
+      ppa006CanonicalStabilityAuditRollbackContract := by
+  unfold PPA006StabilityAuditRollbackContract.closed
+  unfold ppa006CanonicalStabilityAuditRollbackContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract,
+    PPA005Paper16CertificateCompatibilityContract.closed,
+    ppa005CanonicalPaper16CertificateCompatibilityContract]
+
+/--
 The full Paper 17 theorem stays closed only after a future final conditional
 certificate. `PPA-001` intentionally leaves that field false.
 -/
@@ -946,5 +1095,57 @@ theorem paper17_ppa005_paper16_compatibility_skeleton_does_not_close_physical_pr
     ppa004CanonicalDecisionObjectionRiskContract,
     PPA005Paper16CertificateCompatibilityContract.closed,
     ppa005CanonicalPaper16CertificateCompatibilityContract]
+
+def paper17PPA006StabilityAuditRollbackSkeletonContract :
+    Paper17PhysicalPromotionAttemptTheoremContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    ppa004DecisionObjectionRiskClosed :=
+      PPA004DecisionObjectionRiskContract.closed
+        ppa004CanonicalDecisionObjectionRiskContract,
+    ppa005Paper16CertificateCompatibilityClosed :=
+      PPA005Paper16CertificateCompatibilityContract.closed
+        ppa005CanonicalPaper16CertificateCompatibilityContract,
+    ppa006StabilityAuditRollbackClosed :=
+      PPA006StabilityAuditRollbackContract.closed
+        ppa006CanonicalStabilityAuditRollbackContract,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed := False,
+    ppa008FinalConditionalCertificateClosed := False,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem paper17_ppa006_stability_audit_rollback_skeleton_does_not_close_physical_promotion_attempt_theorem :
+    ¬ Paper17PhysicalPromotionAttemptTheoremContract.closed
+      paper17PPA006StabilityAuditRollbackSkeletonContract := by
+  unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
+  unfold paper17PPA006StabilityAuditRollbackSkeletonContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract,
+    PPA005Paper16CertificateCompatibilityContract.closed,
+    ppa005CanonicalPaper16CertificateCompatibilityContract,
+    PPA006StabilityAuditRollbackContract.closed,
+    ppa006CanonicalStabilityAuditRollbackContract]
 
 end FiniteCapacity
