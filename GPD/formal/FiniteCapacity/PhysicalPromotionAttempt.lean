@@ -557,6 +557,150 @@ theorem ppa004_canonical_decision_objection_risk_closed :
     ppa003CanonicalEligibilityEvidenceReviewContract]
 
 /--
+`PPA-005` records compatibility with the frozen Paper 16 review/reproduction
+certificate endpoint. Compatibility is reference-only: it does not assert
+review acceptance, reproduction success, validation success, benchmark success,
+prediction success, or falsification success.
+-/
+structure PPA005Paper16CertificateCompatibilityContract where
+  ppa004DecisionObjectionRiskClosed : Prop
+  finitePaper16EndpointReference : Prop
+  finitePaper16FinalCertificateReference : Prop
+  finiteReviewCertificateCompatibilityDescriptor : Prop
+  finiteReproductionCertificateCompatibilityDescriptor : Prop
+  reviewCertificateReferenceIsNotAcceptance : Prop
+  reproductionCertificateReferenceIsNotSuccess : Prop
+  validationCompatibilityIsNotValidationSuccess : Prop
+  benchmarkCompatibilityIsNotBenchmarkSuccess : Prop
+  predictionCompatibilityIsNotPredictionSuccess : Prop
+  falsificationCompatibilityIsNotFalsificationSuccess : Prop
+  evidenceIntakeCompatibilityIsNotPromotion : Prop
+  auditableCompatibilityRow : Prop
+  rollbackCompatibleCompatibilityRow : Prop
+  noPhysicalPromotionAttemptSuccessClaim : Prop
+  noPhysicalPromotionClaim : Prop
+  noPhysicalValidationClaim : Prop
+  noEmpiricalAdequacyClaim : Prop
+  noReviewAcceptanceClaim : Prop
+  noReproductionSuccessClaim : Prop
+  noBenchmarkSuccessClaim : Prop
+  noPredictionSuccessClaim : Prop
+  noFalsificationSuccessClaim : Prop
+  noPhysicalNatureClaim : Prop
+  noUnifiedFieldTheoryClaim : Prop
+
+def PPA005Paper16CertificateCompatibilityContract.closed
+    (c : PPA005Paper16CertificateCompatibilityContract) : Prop :=
+  c.ppa004DecisionObjectionRiskClosed ∧
+  c.finitePaper16EndpointReference ∧
+  c.finitePaper16FinalCertificateReference ∧
+  c.finiteReviewCertificateCompatibilityDescriptor ∧
+  c.finiteReproductionCertificateCompatibilityDescriptor ∧
+  c.reviewCertificateReferenceIsNotAcceptance ∧
+  c.reproductionCertificateReferenceIsNotSuccess ∧
+  c.validationCompatibilityIsNotValidationSuccess ∧
+  c.benchmarkCompatibilityIsNotBenchmarkSuccess ∧
+  c.predictionCompatibilityIsNotPredictionSuccess ∧
+  c.falsificationCompatibilityIsNotFalsificationSuccess ∧
+  c.evidenceIntakeCompatibilityIsNotPromotion ∧
+  c.auditableCompatibilityRow ∧
+  c.rollbackCompatibleCompatibilityRow ∧
+  c.noPhysicalPromotionAttemptSuccessClaim ∧
+  c.noPhysicalPromotionClaim ∧
+  c.noPhysicalValidationClaim ∧
+  c.noEmpiricalAdequacyClaim ∧
+  c.noReviewAcceptanceClaim ∧
+  c.noReproductionSuccessClaim ∧
+  c.noBenchmarkSuccessClaim ∧
+  c.noPredictionSuccessClaim ∧
+  c.noFalsificationSuccessClaim ∧
+  c.noPhysicalNatureClaim ∧
+  c.noUnifiedFieldTheoryClaim
+
+theorem ppa005_paper16_certificate_compatibility_closed_from_fields
+    (c : PPA005Paper16CertificateCompatibilityContract)
+    (hPPA004 : c.ppa004DecisionObjectionRiskClosed)
+    (hEndpoint : c.finitePaper16EndpointReference)
+    (hFinalCertificate : c.finitePaper16FinalCertificateReference)
+    (hReviewDescriptor : c.finiteReviewCertificateCompatibilityDescriptor)
+    (hReproductionDescriptor :
+      c.finiteReproductionCertificateCompatibilityDescriptor)
+    (hReviewNoAcceptance : c.reviewCertificateReferenceIsNotAcceptance)
+    (hReproductionNoSuccess : c.reproductionCertificateReferenceIsNotSuccess)
+    (hValidationNoSuccess : c.validationCompatibilityIsNotValidationSuccess)
+    (hBenchmarkNoSuccess : c.benchmarkCompatibilityIsNotBenchmarkSuccess)
+    (hPredictionNoSuccess : c.predictionCompatibilityIsNotPredictionSuccess)
+    (hFalsificationNoSuccess :
+      c.falsificationCompatibilityIsNotFalsificationSuccess)
+    (hEvidenceNoPromotion : c.evidenceIntakeCompatibilityIsNotPromotion)
+    (hAuditable : c.auditableCompatibilityRow)
+    (hRollback : c.rollbackCompatibleCompatibilityRow)
+    (hNoAttemptSuccess : c.noPhysicalPromotionAttemptSuccessClaim)
+    (hNoPromotion : c.noPhysicalPromotionClaim)
+    (hNoValidation : c.noPhysicalValidationClaim)
+    (hNoEmpirical : c.noEmpiricalAdequacyClaim)
+    (hNoReviewAcceptance : c.noReviewAcceptanceClaim)
+    (hNoReproduction : c.noReproductionSuccessClaim)
+    (hNoBenchmark : c.noBenchmarkSuccessClaim)
+    (hNoPrediction : c.noPredictionSuccessClaim)
+    (hNoFalsification : c.noFalsificationSuccessClaim)
+    (hNoNature : c.noPhysicalNatureClaim)
+    (hNoUFT : c.noUnifiedFieldTheoryClaim) :
+    PPA005Paper16CertificateCompatibilityContract.closed c := by
+  unfold PPA005Paper16CertificateCompatibilityContract.closed
+  exact ⟨hPPA004, hEndpoint, hFinalCertificate, hReviewDescriptor,
+    hReproductionDescriptor, hReviewNoAcceptance, hReproductionNoSuccess,
+    hValidationNoSuccess, hBenchmarkNoSuccess, hPredictionNoSuccess,
+    hFalsificationNoSuccess, hEvidenceNoPromotion, hAuditable, hRollback,
+    hNoAttemptSuccess, hNoPromotion, hNoValidation, hNoEmpirical,
+    hNoReviewAcceptance, hNoReproduction, hNoBenchmark, hNoPrediction,
+    hNoFalsification, hNoNature, hNoUFT⟩
+
+def ppa005CanonicalPaper16CertificateCompatibilityContract :
+    PPA005Paper16CertificateCompatibilityContract :=
+  {
+    ppa004DecisionObjectionRiskClosed :=
+      PPA004DecisionObjectionRiskContract.closed
+        ppa004CanonicalDecisionObjectionRiskContract,
+    finitePaper16EndpointReference := True,
+    finitePaper16FinalCertificateReference := True,
+    finiteReviewCertificateCompatibilityDescriptor := True,
+    finiteReproductionCertificateCompatibilityDescriptor := True,
+    reviewCertificateReferenceIsNotAcceptance := True,
+    reproductionCertificateReferenceIsNotSuccess := True,
+    validationCompatibilityIsNotValidationSuccess := True,
+    benchmarkCompatibilityIsNotBenchmarkSuccess := True,
+    predictionCompatibilityIsNotPredictionSuccess := True,
+    falsificationCompatibilityIsNotFalsificationSuccess := True,
+    evidenceIntakeCompatibilityIsNotPromotion := True,
+    auditableCompatibilityRow := True,
+    rollbackCompatibleCompatibilityRow := True,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem ppa005_canonical_paper16_certificate_compatibility_closed :
+    PPA005Paper16CertificateCompatibilityContract.closed
+      ppa005CanonicalPaper16CertificateCompatibilityContract := by
+  unfold PPA005Paper16CertificateCompatibilityContract.closed
+  unfold ppa005CanonicalPaper16CertificateCompatibilityContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract]
+
+/--
 The full Paper 17 theorem stays closed only after a future final conditional
 certificate. `PPA-001` intentionally leaves that field false.
 -/
@@ -754,5 +898,53 @@ theorem paper17_ppa004_decision_objection_risk_skeleton_does_not_close_physical_
     ppa003CanonicalEligibilityEvidenceReviewContract,
     PPA004DecisionObjectionRiskContract.closed,
     ppa004CanonicalDecisionObjectionRiskContract]
+
+def paper17PPA005Paper16CompatibilitySkeletonContract :
+    Paper17PhysicalPromotionAttemptTheoremContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    ppa004DecisionObjectionRiskClosed :=
+      PPA004DecisionObjectionRiskContract.closed
+        ppa004CanonicalDecisionObjectionRiskContract,
+    ppa005Paper16CertificateCompatibilityClosed :=
+      PPA005Paper16CertificateCompatibilityContract.closed
+        ppa005CanonicalPaper16CertificateCompatibilityContract,
+    ppa006StabilityAuditRollbackClosed := False,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed := False,
+    ppa008FinalConditionalCertificateClosed := False,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem paper17_ppa005_paper16_compatibility_skeleton_does_not_close_physical_promotion_attempt_theorem :
+    ¬ Paper17PhysicalPromotionAttemptTheoremContract.closed
+      paper17PPA005Paper16CompatibilitySkeletonContract := by
+  unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
+  unfold paper17PPA005Paper16CompatibilitySkeletonContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract,
+    PPA005Paper16CertificateCompatibilityContract.closed,
+    ppa005CanonicalPaper16CertificateCompatibilityContract]
 
 end FiniteCapacity

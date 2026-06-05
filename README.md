@@ -47,8 +47,9 @@ upstream binding and claim boundary through the closed Paper 16 result.
 auditable, non-promoting interface rows. `PPA-003` defines finite promotion
 eligibility, evidence-bundle, and review reference descriptors. `PPA-004`
 defines finite decision, objection, and residual-risk descriptors. `PPA-005`
-is the active next obligation: define Paper 16 certificate compatibility
-without acceptance or success.
+defines Paper 16 certificate compatibility without acceptance or success.
+`PPA-006` is the active next obligation: define attempt stability,
+auditability, and rollback behavior.
 
 This does not prove physical promotion attempt success, physical promotion,
 physical validation, empirical adequacy, review acceptance, reproduction

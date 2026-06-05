@@ -26,6 +26,8 @@ pub const PAPER17_PPA002_MARKER: &str = "paper17-physical-promotion-attempt-ppa0
 pub const PAPER17_PPA003_MARKER: &str = "paper17-physical-promotion-attempt-ppa003-descriptors";
 pub const PAPER17_PPA004_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa004-decision-objection-risk";
+pub const PAPER17_PPA005_MARKER: &str =
+    "paper17-physical-promotion-attempt-ppa005-paper16-compatibility";
 pub const MAX_ATTEMPT_DESCRIPTOR_LEN: usize = 128;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -314,6 +316,73 @@ impl PPA004DecisionObjectionRiskDescriptors {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct PPA005Paper16CertificateCompatibility {
+    pub paper16_endpoint_reference: &'static str,
+    pub paper16_final_certificate_reference: &'static str,
+    pub review_certificate_compatibility_descriptor: &'static str,
+    pub reproduction_certificate_compatibility_descriptor: &'static str,
+    pub review_certificate_reference_is_not_acceptance: bool,
+    pub reproduction_certificate_reference_is_not_success: bool,
+    pub validation_compatibility_is_not_validation_success: bool,
+    pub benchmark_compatibility_is_not_benchmark_success: bool,
+    pub prediction_compatibility_is_not_prediction_success: bool,
+    pub falsification_compatibility_is_not_falsification_success: bool,
+    pub evidence_intake_compatibility_is_not_promotion: bool,
+    pub auditable_compatibility_row: bool,
+    pub rollback_compatible_compatibility_row: bool,
+    pub claim_boundary: Paper17ClaimBoundary,
+}
+
+impl PPA005Paper16CertificateCompatibility {
+    pub const fn canonical() -> Self {
+        Self {
+            paper16_endpoint_reference: PAPER16_FORMAL_ENDPOINT,
+            paper16_final_certificate_reference: PAPER16_FINAL_CERTIFICATE,
+            review_certificate_compatibility_descriptor: "paper16-review-reference-only",
+            reproduction_certificate_compatibility_descriptor:
+                "paper16-reproduction-reference-only",
+            review_certificate_reference_is_not_acceptance: true,
+            reproduction_certificate_reference_is_not_success: true,
+            validation_compatibility_is_not_validation_success: true,
+            benchmark_compatibility_is_not_benchmark_success: true,
+            prediction_compatibility_is_not_prediction_success: true,
+            falsification_compatibility_is_not_falsification_success: true,
+            evidence_intake_compatibility_is_not_promotion: true,
+            auditable_compatibility_row: true,
+            rollback_compatible_compatibility_row: true,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
+    pub fn closes_ppa005(
+        &self,
+        attempt_record: &PPA002FinitePromotionAttemptRecord,
+        descriptors: &PPA003EligibilityEvidenceReviewDescriptors,
+        decision_row: &PPA004DecisionObjectionRiskDescriptors,
+    ) -> bool {
+        decision_row.closes_ppa004(attempt_record, descriptors)
+            && bounded_descriptor(self.paper16_endpoint_reference)
+            && bounded_descriptor(self.paper16_final_certificate_reference)
+            && bounded_descriptor(self.review_certificate_compatibility_descriptor)
+            && bounded_descriptor(self.reproduction_certificate_compatibility_descriptor)
+            && self.paper16_endpoint_reference == PAPER16_FORMAL_ENDPOINT
+            && self.paper16_final_certificate_reference == PAPER16_FINAL_CERTIFICATE
+            && self.review_certificate_reference_is_not_acceptance
+            && self.reproduction_certificate_reference_is_not_success
+            && self.validation_compatibility_is_not_validation_success
+            && self.benchmark_compatibility_is_not_benchmark_success
+            && self.prediction_compatibility_is_not_prediction_success
+            && self.falsification_compatibility_is_not_falsification_success
+            && self.evidence_intake_compatibility_is_not_promotion
+            && self.auditable_compatibility_row
+            && self.rollback_compatible_compatibility_row
+            && self
+                .claim_boundary
+                .all_physical_promotion_and_success_claims_remain_false()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct PPA001UpstreamBinding {
     pub upstream_chain: &'static [UpstreamPaper],
     pub paper16_frozen_commit: &'static str,
@@ -458,6 +527,20 @@ impl Paper17SkeletonCertificate {
         }
     }
 
+    pub const fn ppa005_paper16_compatibility_closed() -> Self {
+        Self {
+            ppa001_upstream_binding_closed: true,
+            ppa002_finite_promotion_attempt_record_closed: true,
+            ppa003_eligibility_evidence_review_closed: true,
+            ppa004_decision_objection_risk_closed: true,
+            ppa005_paper16_certificate_compatibility_closed: true,
+            ppa006_stability_audit_rollback_closed: false,
+            ppa007_no_hidden_promotion_validation_nature_audit_closed: false,
+            ppa008_final_conditional_certificate_closed: false,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
     pub fn closes_paper17_theorem(&self) -> bool {
         self.ppa001_upstream_binding_closed
             && self.ppa002_finite_promotion_attempt_record_closed
@@ -489,6 +572,10 @@ pub fn paper17_ppa004_marker() -> &'static str {
     PAPER17_PPA004_MARKER
 }
 
+pub fn paper17_ppa005_marker() -> &'static str {
+    PAPER17_PPA005_MARKER
+}
+
 pub fn is_sha1_hex(value: &str) -> bool {
     value.len() == 40 && value.bytes().all(|byte| byte.is_ascii_hexdigit())
 }
@@ -502,5 +589,5 @@ pub fn bounded_descriptor(value: &str) -> bool {
 }
 
 pub fn active_obligation() -> &'static str {
-    "PPA-005"
+    "PPA-006"
 }

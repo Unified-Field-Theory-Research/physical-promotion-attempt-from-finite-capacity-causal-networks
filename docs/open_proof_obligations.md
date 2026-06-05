@@ -2,18 +2,18 @@
 
 ## Active
 
-### PPA-005
+### PPA-006
 
-Define Paper 16 certificate compatibility without acceptance or success.
+Define attempt stability, auditability, and rollback behavior.
 
 Acceptance criteria:
 
-- Paper 16 certificate compatibility descriptors are finite and bounded
-- review certificate references do not claim review acceptance
-- reproduction certificate references do not claim reproduction success
-- validation, benchmark, prediction, and falsification compatibility remains
-  conditional and non-successful
-- compatibility rows are auditable and rollback-compatible
+- stability descriptors are finite and bounded
+- audit descriptors are finite, replayable, and bounded
+- rollback descriptors are finite, local, and bounded
+- rollback behavior does not claim falsification success, review failure, or
+  physical-promotion failure
+- stability/audit/rollback rows preserve every non-promotion claim boundary
 - Rust and Lean guards keep the full Paper 17 theorem open until later rungs
 
 ## Closed
@@ -24,3 +24,4 @@ Acceptance criteria:
 - `PPA-003`: Finite promotion eligibility, evidence-bundle, and review
   reference descriptors.
 - `PPA-004`: Finite decision, objection, and residual-risk descriptors.
+- `PPA-005`: Paper 16 certificate compatibility without acceptance or success.

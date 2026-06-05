@@ -23,3 +23,8 @@
   descriptors as bounded, auditable labels that do not claim promotion
   decisions, objection resolution, or risk discharge.
 - Recorded `PPA-005` as the active next obligation.
+- Closed `PPA-005` by defining finite Paper 16 certificate compatibility rows
+  that reference the frozen endpoint and final certificate without claiming
+  review acceptance, reproduction success, validation success, benchmark
+  success, prediction success, or falsification success.
+- Recorded `PPA-006` as the active next obligation.

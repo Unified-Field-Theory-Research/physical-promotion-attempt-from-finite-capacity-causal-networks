@@ -1,14 +1,15 @@
 {
   "schema_version": 1,
   "paper": 17,
-  "phase": 4,
-  "phase_name": "Finite Decision Objection And Risk Descriptors",
-  "active_obligation": "PPA-005",
+  "phase": 5,
+  "phase_name": "Paper 16 Certificate Compatibility",
+  "active_obligation": "PPA-006",
   "closed_obligations": [
     "PPA-001",
     "PPA-002",
     "PPA-003",
-    "PPA-004"
+    "PPA-004",
+    "PPA-005"
   ],
   "upstream_frozen_through_paper16": true,
   "paper16_frozen_commit": "8bb266493b1c53c776b2d39a47140794edc8935f",
@@ -19,7 +20,7 @@
     "ppa002_finite_promotion_attempt_record_closed": true,
     "ppa003_eligibility_evidence_review_closed": true,
     "ppa004_decision_objection_risk_closed": true,
-    "ppa005_paper16_certificate_compatibility_closed": false,
+    "ppa005_paper16_certificate_compatibility_closed": true,
     "ppa006_stability_audit_rollback_closed": false,
     "ppa007_no_hidden_promotion_validation_nature_audit_closed": false,
     "ppa008_final_conditional_certificate_closed": false,
@@ -47,5 +48,5 @@
     "physical_nature_claim": false,
     "unified_field_theory_claim": false
   },
-  "next_move": "PPA-005: define Paper 16 certificate compatibility without acceptance or success."
+  "next_move": "PPA-006: define attempt stability, auditability, and rollback behavior."
 }

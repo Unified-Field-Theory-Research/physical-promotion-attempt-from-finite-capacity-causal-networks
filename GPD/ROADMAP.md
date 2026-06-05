@@ -15,15 +15,16 @@
 - `PPA-004`: Finite decision, objection, and residual-risk descriptors without
   importing promotion decisions, objection resolution, risk discharge, or
   review acceptance.
+- `PPA-005`: Paper 16 review/reproduction certificate compatibility without
+  claiming review acceptance, reproduction success, validation success,
+  benchmark success, prediction success, or falsification success.
 
 ## Active
 
-- `PPA-005`: Define compatibility with Paper 16 review/reproduction
-  certificates without claiming acceptance or success.
+- `PPA-006`: Define attempt stability, auditability, and rollback behavior.
 
 ## Planned
 
-- `PPA-006`: Define attempt stability, auditability, and rollback behavior.
 - `PPA-007`: Audit for hidden physical-promotion, validation, nature, or
   unified-field-theory imports.
 - `PPA-008`: Assemble the final conditional physical promotion attempt theorem.

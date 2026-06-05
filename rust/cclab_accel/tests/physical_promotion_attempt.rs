@@ -3,10 +3,11 @@ use std::path::{Path, PathBuf};
 
 use cclab_accel::{
     active_obligation, bounded_descriptor, paper17_ppa002_marker, paper17_ppa003_marker,
-    paper17_ppa004_marker, paper17_skeleton_marker, PPA001UpstreamBinding,
+    paper17_ppa004_marker, paper17_ppa005_marker, paper17_skeleton_marker, PPA001UpstreamBinding,
     PPA002FinitePromotionAttemptRecord, PPA003EligibilityEvidenceReviewDescriptors,
-    PPA004DecisionObjectionRiskDescriptors, Paper17SkeletonCertificate, PAPER16_FINAL_CERTIFICATE,
-    PAPER16_FORMAL_ENDPOINT, PAPER16_FROZEN_COMMIT,
+    PPA004DecisionObjectionRiskDescriptors, PPA005Paper16CertificateCompatibility,
+    Paper17SkeletonCertificate, PAPER16_FINAL_CERTIFICATE, PAPER16_FORMAL_ENDPOINT,
+    PAPER16_FROZEN_COMMIT,
 };
 
 fn repo_root() -> PathBuf {
@@ -171,6 +172,56 @@ fn ppa004_skeleton_closes_decision_rung_but_not_theorem() {
 }
 
 #[test]
+fn ppa005_references_paper16_certificates_without_acceptance_or_success() {
+    let attempt_record = PPA002FinitePromotionAttemptRecord::canonical();
+    let descriptors = PPA003EligibilityEvidenceReviewDescriptors::canonical();
+    let decision_row = PPA004DecisionObjectionRiskDescriptors::canonical();
+    let compatibility = PPA005Paper16CertificateCompatibility::canonical();
+    assert!(compatibility.closes_ppa005(&attempt_record, &descriptors, &decision_row));
+    assert_eq!(
+        compatibility.paper16_endpoint_reference,
+        PAPER16_FORMAL_ENDPOINT
+    );
+    assert_eq!(
+        compatibility.paper16_final_certificate_reference,
+        PAPER16_FINAL_CERTIFICATE
+    );
+    assert!(bounded_descriptor(
+        compatibility.review_certificate_compatibility_descriptor
+    ));
+    assert!(bounded_descriptor(
+        compatibility.reproduction_certificate_compatibility_descriptor
+    ));
+    assert!(compatibility.review_certificate_reference_is_not_acceptance);
+    assert!(compatibility.reproduction_certificate_reference_is_not_success);
+    assert!(compatibility.validation_compatibility_is_not_validation_success);
+    assert!(compatibility.benchmark_compatibility_is_not_benchmark_success);
+    assert!(compatibility.prediction_compatibility_is_not_prediction_success);
+    assert!(compatibility.falsification_compatibility_is_not_falsification_success);
+    assert!(compatibility.evidence_intake_compatibility_is_not_promotion);
+    assert!(compatibility
+        .claim_boundary
+        .all_physical_promotion_and_success_claims_remain_false());
+    assert_eq!(
+        paper17_ppa005_marker(),
+        "paper17-physical-promotion-attempt-ppa005-paper16-compatibility"
+    );
+}
+
+#[test]
+fn ppa005_skeleton_closes_paper16_compatibility_but_not_theorem() {
+    let skeleton = Paper17SkeletonCertificate::ppa005_paper16_compatibility_closed();
+    assert!(skeleton.ppa001_upstream_binding_closed);
+    assert!(skeleton.ppa002_finite_promotion_attempt_record_closed);
+    assert!(skeleton.ppa003_eligibility_evidence_review_closed);
+    assert!(skeleton.ppa004_decision_objection_risk_closed);
+    assert!(skeleton.ppa005_paper16_certificate_compatibility_closed);
+    assert!(!skeleton.ppa006_stability_audit_rollback_closed);
+    assert!(!skeleton.ppa008_final_conditional_certificate_closed);
+    assert!(!skeleton.closes_paper17_theorem());
+}
+
+#[test]
 fn upstream_json_records_paper16_certificate_and_nonpromotion() {
     let upstream = read_repo_file("UPSTREAM-PAPERS.json");
     assert!(upstream.contains(PAPER16_FROZEN_COMMIT));
@@ -185,16 +236,17 @@ fn upstream_json_records_paper16_certificate_and_nonpromotion() {
 }
 
 #[test]
-fn docs_keep_ppa005_active_and_promotion_claims_false() {
+fn docs_keep_ppa006_active_and_promotion_claims_false() {
     let state = read_repo_file("GPD/state.json");
     let state_md = read_repo_file("GPD/STATE.md");
     let theorem = read_repo_file("docs/physical_promotion_attempt_theorem.md");
 
-    assert_eq!(active_obligation(), "PPA-005");
-    assert!(state.contains("\"active_obligation\": \"PPA-005\""));
+    assert_eq!(active_obligation(), "PPA-006");
+    assert!(state.contains("\"active_obligation\": \"PPA-006\""));
     assert!(state.contains("\"ppa002_finite_promotion_attempt_record_closed\": true"));
     assert!(state.contains("\"ppa003_eligibility_evidence_review_closed\": true"));
     assert!(state.contains("\"ppa004_decision_objection_risk_closed\": true"));
+    assert!(state.contains("\"ppa005_paper16_certificate_compatibility_closed\": true"));
     assert!(state.contains("\"physical_promotion_attempt_theorem_closed\": false"));
     assert!(state.contains("\"physical_promotion_attempt_success_claim\": false"));
     assert!(state.contains("\"physical_promotion_claim\": false"));
@@ -202,7 +254,7 @@ fn docs_keep_ppa005_active_and_promotion_claims_false() {
     assert!(state.contains("\"empirical_adequacy_claim\": false"));
     assert!(state.contains("\"physical_nature_claim\": false"));
     assert!(state_md.contains("theorem is not closed"));
-    assert!(theorem.contains("PPA-005"));
+    assert!(theorem.contains("PPA-006"));
     assert!(theorem.contains("no unified field theory claim"));
 }
 
