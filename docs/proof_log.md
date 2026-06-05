@@ -45,3 +45,6 @@
 - Closed the Paper 17 physical promotion attempt theorem as a conditional
   finite interface theorem while preserving all non-promotion, non-validation,
   non-success, non-nature, and non-unified-field boundaries.
+- Expanded the publication manuscript into a self-contained Paper 17 paper
+  recording the theorem statement, construction, proof, runtime audit, claim
+  boundary, and reproducibility commands.

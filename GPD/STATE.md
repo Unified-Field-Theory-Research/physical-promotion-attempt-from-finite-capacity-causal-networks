@@ -27,6 +27,11 @@ finite interface theorem.
 
 None.
 
+## Paper Artifact
+
+The self-contained Paper 17 manuscript is recorded at
+`GPD/publication/physical-promotion-attempt-theorem/manuscript/physical_promotion_attempt_theorem.tex`.
+
 The closed final certificate remains conditional and non-promoting. It does not
 import continuum quantum field theory, external Hilbert bundles, matter fields,
 gauge fields, physical particle excitations, physical Standard Model content,

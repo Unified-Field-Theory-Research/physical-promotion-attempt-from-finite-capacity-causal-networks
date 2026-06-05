@@ -86,7 +86,7 @@ Primary author: Abraham Greenman.
 ## Layout
 
 - `GPD/publication/physical-promotion-attempt-theorem/manuscript/`: Paper 17
-  manuscript skeleton and publication metadata.
+  self-contained manuscript and publication metadata.
 - `GPD/formal/FiniteCapacity/PhysicalPromotionAttempt.lean`: Lean scaffold for
   Paper 17 gates and fail-closed blockers.
 - `docs/physical_promotion_attempt_theorem.md`: theorem target, closed

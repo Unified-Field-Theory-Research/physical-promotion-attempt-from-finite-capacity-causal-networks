@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
 
 \title{Physical Promotion Attempt From Finite-Capacity Causal Networks}
 \author{Abraham Greenman}
@@ -8,30 +9,231 @@
 \begin{document}
 \maketitle
 
-\section{Status}
+\begin{abstract}
+This paper closes Paper 17 in the finite-capacity causal-network theorem
+ladder. Starting from the closed Paper 16 conditional external review and
+reproduction certificates theorem, it constructs a finite, network-native
+physical-promotion attempt interface. The construction is conditional and
+non-promoting: it defines attempt records, eligibility references, evidence
+bundle references, review certificate references, decision rows, objection
+rows, residual-risk rows, stability rows, audit rows, rollback rows, and a
+final conditional certificate. It does not prove physical promotion attempt
+success, physical promotion, physical validation, empirical adequacy, review
+acceptance, reproduction success, benchmark success, prediction success,
+falsification success, physical nature realization, or a unified field theory.
+\end{abstract}
 
-This is the Paper 17 manuscript scaffold for the closed conditional theorem.
-The theorem ladder closes at PPA-008: final conditional certificate. The
-formal endpoint is
+\section{Theorem Status}
+
+The Paper 17 theorem is closed as a conditional finite interface theorem. The
+formal Lean endpoint is
+\[
 \texttt{paper17\_ppa008\_final\_conditional\_certificate\_closes\_physical\_promotion\_attempt\_theorem}.
+\]
+The closing contract is
+\[
+\texttt{Paper17PhysicalPromotionAttemptTheoremContract.closed}.
+\]
+
+The Rust audit surface is in \texttt{rust/cclab\_accel/src/lib.rs}, and the
+regression tests are in
+\texttt{rust/cclab\_accel/tests/physical\_promotion\_attempt.rs}. The
+required local checks are:
+\begin{verbatim}
+make test-fast
+make lean-build
+\end{verbatim}
+
+\section{Upstream Assumption}
+
+Paper 17 starts after the frozen Paper 16 result:
+\begin{itemize}
+\item Paper 16 commit:
+\texttt{8bb266493b1c53c776b2d39a47140794edc8935f}.
+\item Paper 16 formal endpoint:
+\texttt{Paper16ExternalReviewReproductionCertificatesTheoremContract.closed}.
+\item Paper 16 canonical proof:
+\texttt{paper16\_errc008\_final\_conditional\_certificate\_closes\_external\_review\_reproduction\_certificates\_theorem}.
+\end{itemize}
+
+The upstream result is consumed only as a conditional review/reproduction
+certificate package. It is not reinterpreted as review acceptance,
+reproduction success, external validation success, physical promotion, or
+physical nature realization.
+
+\section{Main Theorem}
+
+\textbf{Theorem.} Starting from the closed Paper 16 conditional external
+review and reproduction certificates theorem, there is a finite,
+network-native physical-promotion attempt interface preserving finite
+capacity, locality, bounded transfer, Paper 16 certificate compatibility,
+stability, auditability, rollback behavior, and no-hidden-import boundaries.
+The interface closes only as a conditional attempt-interface theorem and does
+not close any physical-promotion, physical-validation, success, physical
+nature, or unified-field claim.
+
+\section{Construction}
+
+The construction is a sequence of eight closed rungs.
+
+\subsection{PPA-001: Upstream Binding}
+
+PPA-001 binds Papers 1--16 through frozen upstream commits and the Paper 16
+final conditional certificate. The rung preserves finite capacity, locality,
+bounded transfer, and the claim boundary. No physical promotion, validation,
+empirical adequacy, review acceptance, reproduction success, physical nature,
+or unified-field claim is imported.
+
+\subsection{PPA-002: Finite Attempt Records}
+
+PPA-002 defines the physical-promotion attempt record as a bounded,
+auditable interface row. Each row contains finite labels for:
+\begin{itemize}
+\item attempt identifier,
+\item eligibility reference,
+\item evidence-bundle reference,
+\item review-certificate reference,
+\item decision reference,
+\item objection reference,
+\item residual-risk reference,
+\item audit-status descriptor.
+\end{itemize}
+The row is an attempt record only. It does not assert attempt success,
+promotion, validation, empirical adequacy, acceptance, reproduction success,
+benchmark success, prediction success, falsification success, simulation-only
+promotion, fit-only calibration, physical nature, or unified-field promotion.
+
+\subsection{PPA-003: Eligibility, Evidence, and Review Descriptors}
+
+PPA-003 refines the attempt row with finite eligibility, evidence-bundle, and
+review-reference descriptors. Eligibility descriptors are not eligibility
+success findings. Evidence descriptors are not evidence sufficiency claims.
+Review references are not review acceptance claims. Paper 16 certificate
+references remain reference-only.
+
+\subsection{PPA-004: Decision, Objection, and Residual-Risk Descriptors}
+
+PPA-004 defines finite decision, objection, and residual-risk descriptors.
+Decision descriptors are not promotion decisions. Objection descriptors are
+not objection adjudications or review outcomes. Residual-risk descriptors are
+not risk discharge claims. These descriptors are bounded, auditable, local to
+the attempt interface, and rollback-compatible.
+
+\subsection{PPA-005: Paper 16 Certificate Compatibility}
+
+PPA-005 defines compatibility rows for the frozen Paper 16 endpoint and final
+certificate. The compatibility rows record finite references to review and
+reproduction certificates without asserting review acceptance, reproduction
+success, validation success, benchmark success, prediction success, or
+falsification success.
+
+\subsection{PPA-006: Stability, Audit, and Rollback}
+
+PPA-006 defines finite stability, audit, and rollback descriptors. Stability
+is interface stability only, not empirical stability. Audit descriptors are
+finite and replayable from attempt rows. Rollback is local bookkeeping for the
+attempt interface and is not falsification success, review failure, promotion
+failure, validation failure, or empirical inadequacy.
+
+\subsection{PPA-007: No-Hidden-Import Audit}
+
+PPA-007 closes a fail-closed audit for hidden imports. The audit rejects
+hidden physical-promotion attempt success, physical promotion, physical
+validation, empirical adequacy, review acceptance, reproduction success,
+benchmark success, prediction success, falsification success, simulation-only
+promotion, fit-only calibration, physical nature realization, and
+unified-field-theory imports. Closing this audit establishes absence of those
+hidden imports only; it does not promote or validate the attempt.
+
+\subsection{PPA-008: Final Conditional Certificate}
+
+PPA-008 assembles the final certificate. It consumes the closed contracts for
+PPA-001 through PPA-007 and closes
+\texttt{Paper17PhysicalPromotionAttemptTheoremContract.closed}. The closing
+certificate is conditional and interface-level. It preserves finite capacity,
+locality, bounded transfer, the hidden-import audit, and every non-promotion
+boundary.
+
+\section{Proof}
+
+The proof is by finite contract assembly. For each rung, the Lean development
+defines a contract whose \texttt{closed} predicate is a finite conjunction of
+its required fields. A canonical contract instantiates each field with the
+corresponding boundedness, compatibility, audit, or no-claim witness. Lean then
+proves each canonical rung closed by unfolding the contract and simplifying.
+
+The final theorem contract contains the closed status of PPA-001 through
+PPA-008 plus the non-promotion boundary fields. The theorem
+\[
+\texttt{paper17\_ppa008\_final\_conditional\_certificate\_closes\_physical\_promotion\_attempt\_theorem}
+\]
+unfolds the final contract, unfolds the canonical rung witnesses, and closes
+the conjunction. Therefore the Paper 17 theorem is closed exactly as a
+conditional finite physical-promotion attempt interface theorem.
+
+\section{Runtime Audit}
+
+The Rust guard mirrors the formal ladder. Each rung has a canonical runtime
+record and a \texttt{closes\_ppa00n} predicate. The final runtime certificate
+requires:
+\begin{itemize}
+\item all descriptors are bounded,
+\item the Paper 16 endpoint and final certificate match the frozen references,
+\item every compatibility row is reference-only,
+\item rollback is local bookkeeping,
+\item the hidden-import audit rejects all forbidden claims,
+\item all physical-promotion and success claims remain false.
+\end{itemize}
+The final runtime certificate closes the Paper 17 theorem contract only when
+all rung predicates close and the non-promotion boundary remains false for all
+forbidden claim fields.
 
 \section{Claim Boundary}
 
-This manuscript does not prove physical promotion attempt success, physical
-promotion, physical validation, empirical adequacy, review acceptance,
-reproduction success, benchmark success, prediction success, falsification
-success, observed particle catalog recovery, physical Standard Model recovery,
-physical particle excitation recovery, physical matter-field recovery,
-physical gauge-field recovery, physical quantum dynamics, continuum quantum
-field theory, physical nature realization, or a unified field theory.
+This theorem does not prove any of the following:
+\begin{itemize}
+\item physical promotion attempt success,
+\item physical promotion,
+\item physical validation,
+\item empirical adequacy,
+\item review acceptance,
+\item reproduction success,
+\item benchmark success,
+\item prediction success,
+\item falsification success,
+\item observed particle catalog recovery,
+\item physical Standard Model recovery,
+\item physical particle excitation recovery,
+\item physical matter-field recovery,
+\item physical gauge-field recovery,
+\item physical quantum dynamics,
+\item continuum quantum field theory,
+\item simulation-only promotion,
+\item fit-only calibration,
+\item physical nature realization,
+\item unified field theory.
+\end{itemize}
 
-\section{Closed Rungs}
+\section{Reproducibility}
 
-PPA-001 closes upstream binding. PPA-002 closes finite attempt records.
-PPA-003 closes eligibility, evidence-bundle, and review-reference descriptors.
-PPA-004 closes decision, objection, and residual-risk descriptors. PPA-005
-closes Paper 16 certificate compatibility. PPA-006 closes stability, audit,
-and rollback behavior. PPA-007 closes the no-hidden-import audit. PPA-008
-closes the final conditional certificate.
+The theorem can be checked locally from the repository root:
+\begin{verbatim}
+make test-fast
+make lean-build
+\end{verbatim}
+The Lean proof is located at
+\texttt{GPD/formal/FiniteCapacity/PhysicalPromotionAttempt.lean}. The Rust
+guard is located at \texttt{rust/cclab\_accel/src/lib.rs}. The regression tests
+are located at
+\texttt{rust/cclab\_accel/tests/physical\_promotion\_attempt.rs}.
+
+\section{Conclusion}
+
+Paper 17 closes the finite physical-promotion attempt interface theorem. It
+provides a bounded, auditable, rollback-compatible, certificate-compatible
+attempt structure downstream of Paper 16. The closure is intentionally narrow:
+it closes the existence and compatibility of the finite attempt interface, not
+promotion success, validation success, empirical adequacy, physical nature
+realization, or unified-field promotion.
 
 \end{document}

@@ -7,6 +7,8 @@
     "PAPER-CONFIG.json",
     "reproducibility-manifest.json"
   ],
+  "formal_endpoint": "paper17_ppa008_final_conditional_certificate_closes_physical_promotion_attempt_theorem",
+  "status": "self_contained_paper_complete",
   "claim_boundary": {
     "physical_promotion_attempt_success_claim": false,
     "physical_promotion_claim": false,
