@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
   "paper": 17,
-  "phase": 3,
-  "phase_name": "Finite Eligibility Evidence And Review Descriptors",
-  "active_obligation": "PPA-004",
+  "phase": 4,
+  "phase_name": "Finite Decision Objection And Risk Descriptors",
+  "active_obligation": "PPA-005",
   "closed_obligations": [
     "PPA-001",
     "PPA-002",
-    "PPA-003"
+    "PPA-003",
+    "PPA-004"
   ],
   "upstream_frozen_through_paper16": true,
   "paper16_frozen_commit": "8bb266493b1c53c776b2d39a47140794edc8935f",
@@ -17,7 +18,7 @@
     "ppa001_upstream_binding_closed": true,
     "ppa002_finite_promotion_attempt_record_closed": true,
     "ppa003_eligibility_evidence_review_closed": true,
-    "ppa004_decision_objection_risk_closed": false,
+    "ppa004_decision_objection_risk_closed": true,
     "ppa005_paper16_certificate_compatibility_closed": false,
     "ppa006_stability_audit_rollback_closed": false,
     "ppa007_no_hidden_promotion_validation_nature_audit_closed": false,
@@ -46,5 +47,5 @@
     "physical_nature_claim": false,
     "unified_field_theory_claim": false
   },
-  "next_move": "PPA-004: define finite decision, objection, and residual-risk descriptors."
+  "next_move": "PPA-005: define Paper 16 certificate compatibility without acceptance or success."
 }

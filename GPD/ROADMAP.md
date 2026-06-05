@@ -12,15 +12,17 @@
 - `PPA-003`: Finite promotion eligibility, evidence-bundle, and review
   reference descriptors without importing eligibility success, evidence
   sufficiency, review acceptance, reproduction success, or validation success.
+- `PPA-004`: Finite decision, objection, and residual-risk descriptors without
+  importing promotion decisions, objection resolution, risk discharge, or
+  review acceptance.
 
 ## Active
 
-- `PPA-004`: Define finite decision, objection, and residual-risk descriptors.
+- `PPA-005`: Define compatibility with Paper 16 review/reproduction
+  certificates without claiming acceptance or success.
 
 ## Planned
 
-- `PPA-005`: Define compatibility with Paper 16 review/reproduction
-  certificates without claiming acceptance or success.
 - `PPA-006`: Define attempt stability, auditability, and rollback behavior.
 - `PPA-007`: Audit for hidden physical-promotion, validation, nature, or
   unified-field-theory imports.

@@ -422,6 +422,141 @@ theorem ppa003_canonical_eligibility_evidence_review_closed :
     ppa002CanonicalFinitePromotionAttemptRecordContract]
 
 /--
+`PPA-004` adds decision, objection, and residual-risk descriptors. These are
+finite bookkeeping labels only: a decision descriptor is not a promotion
+decision, an objection descriptor is not objection adjudication, and a
+residual-risk descriptor is not risk discharge.
+-/
+structure PPA004DecisionObjectionRiskContract where
+  ppa003EligibilityEvidenceReviewClosed : Prop
+  finiteDecisionDescriptor : Prop
+  boundedDecisionDescriptor : Prop
+  decisionDescriptorIsNotPromotionDecision : Prop
+  finiteObjectionDescriptor : Prop
+  boundedObjectionDescriptor : Prop
+  objectionDescriptorIsNotReviewResolution : Prop
+  finiteResidualRiskDescriptor : Prop
+  boundedResidualRiskDescriptor : Prop
+  residualRiskDescriptorIsNotRiskDischarge : Prop
+  localToAttemptRecord : Prop
+  auditableDescriptorRow : Prop
+  rollbackCompatibleDescriptorRow : Prop
+  noPhysicalPromotionAttemptSuccessClaim : Prop
+  noPhysicalPromotionClaim : Prop
+  noPhysicalValidationClaim : Prop
+  noEmpiricalAdequacyClaim : Prop
+  noReviewAcceptanceClaim : Prop
+  noReproductionSuccessClaim : Prop
+  noBenchmarkSuccessClaim : Prop
+  noPredictionSuccessClaim : Prop
+  noFalsificationSuccessClaim : Prop
+  noPhysicalNatureClaim : Prop
+  noUnifiedFieldTheoryClaim : Prop
+
+def PPA004DecisionObjectionRiskContract.closed
+    (c : PPA004DecisionObjectionRiskContract) : Prop :=
+  c.ppa003EligibilityEvidenceReviewClosed ∧
+  c.finiteDecisionDescriptor ∧
+  c.boundedDecisionDescriptor ∧
+  c.decisionDescriptorIsNotPromotionDecision ∧
+  c.finiteObjectionDescriptor ∧
+  c.boundedObjectionDescriptor ∧
+  c.objectionDescriptorIsNotReviewResolution ∧
+  c.finiteResidualRiskDescriptor ∧
+  c.boundedResidualRiskDescriptor ∧
+  c.residualRiskDescriptorIsNotRiskDischarge ∧
+  c.localToAttemptRecord ∧
+  c.auditableDescriptorRow ∧
+  c.rollbackCompatibleDescriptorRow ∧
+  c.noPhysicalPromotionAttemptSuccessClaim ∧
+  c.noPhysicalPromotionClaim ∧
+  c.noPhysicalValidationClaim ∧
+  c.noEmpiricalAdequacyClaim ∧
+  c.noReviewAcceptanceClaim ∧
+  c.noReproductionSuccessClaim ∧
+  c.noBenchmarkSuccessClaim ∧
+  c.noPredictionSuccessClaim ∧
+  c.noFalsificationSuccessClaim ∧
+  c.noPhysicalNatureClaim ∧
+  c.noUnifiedFieldTheoryClaim
+
+theorem ppa004_decision_objection_risk_closed_from_fields
+    (c : PPA004DecisionObjectionRiskContract)
+    (hPPA003 : c.ppa003EligibilityEvidenceReviewClosed)
+    (hDecisionFinite : c.finiteDecisionDescriptor)
+    (hDecisionBounded : c.boundedDecisionDescriptor)
+    (hDecisionNonPromoting : c.decisionDescriptorIsNotPromotionDecision)
+    (hObjectionFinite : c.finiteObjectionDescriptor)
+    (hObjectionBounded : c.boundedObjectionDescriptor)
+    (hObjectionNotResolution : c.objectionDescriptorIsNotReviewResolution)
+    (hRiskFinite : c.finiteResidualRiskDescriptor)
+    (hRiskBounded : c.boundedResidualRiskDescriptor)
+    (hRiskNotDischarged : c.residualRiskDescriptorIsNotRiskDischarge)
+    (hLocal : c.localToAttemptRecord)
+    (hAuditable : c.auditableDescriptorRow)
+    (hRollback : c.rollbackCompatibleDescriptorRow)
+    (hNoAttemptSuccess : c.noPhysicalPromotionAttemptSuccessClaim)
+    (hNoPromotion : c.noPhysicalPromotionClaim)
+    (hNoValidation : c.noPhysicalValidationClaim)
+    (hNoEmpirical : c.noEmpiricalAdequacyClaim)
+    (hNoReviewAcceptance : c.noReviewAcceptanceClaim)
+    (hNoReproduction : c.noReproductionSuccessClaim)
+    (hNoBenchmark : c.noBenchmarkSuccessClaim)
+    (hNoPrediction : c.noPredictionSuccessClaim)
+    (hNoFalsification : c.noFalsificationSuccessClaim)
+    (hNoNature : c.noPhysicalNatureClaim)
+    (hNoUFT : c.noUnifiedFieldTheoryClaim) :
+    PPA004DecisionObjectionRiskContract.closed c := by
+  unfold PPA004DecisionObjectionRiskContract.closed
+  exact ⟨hPPA003, hDecisionFinite, hDecisionBounded, hDecisionNonPromoting,
+    hObjectionFinite, hObjectionBounded, hObjectionNotResolution, hRiskFinite,
+    hRiskBounded, hRiskNotDischarged, hLocal, hAuditable, hRollback,
+    hNoAttemptSuccess, hNoPromotion, hNoValidation, hNoEmpirical,
+    hNoReviewAcceptance, hNoReproduction, hNoBenchmark, hNoPrediction,
+    hNoFalsification, hNoNature, hNoUFT⟩
+
+def ppa004CanonicalDecisionObjectionRiskContract :
+    PPA004DecisionObjectionRiskContract :=
+  {
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    finiteDecisionDescriptor := True,
+    boundedDecisionDescriptor := True,
+    decisionDescriptorIsNotPromotionDecision := True,
+    finiteObjectionDescriptor := True,
+    boundedObjectionDescriptor := True,
+    objectionDescriptorIsNotReviewResolution := True,
+    finiteResidualRiskDescriptor := True,
+    boundedResidualRiskDescriptor := True,
+    residualRiskDescriptorIsNotRiskDischarge := True,
+    localToAttemptRecord := True,
+    auditableDescriptorRow := True,
+    rollbackCompatibleDescriptorRow := True,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem ppa004_canonical_decision_objection_risk_closed :
+    PPA004DecisionObjectionRiskContract.closed
+      ppa004CanonicalDecisionObjectionRiskContract := by
+  unfold PPA004DecisionObjectionRiskContract.closed
+  unfold ppa004CanonicalDecisionObjectionRiskContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract]
+
+/--
 The full Paper 17 theorem stays closed only after a future final conditional
 certificate. `PPA-001` intentionally leaves that field false.
 -/
@@ -575,5 +710,49 @@ theorem paper17_ppa003_descriptor_skeleton_does_not_close_physical_promotion_att
     ppa002CanonicalFinitePromotionAttemptRecordContract,
     PPA003EligibilityEvidenceReviewContract.closed,
     ppa003CanonicalEligibilityEvidenceReviewContract]
+
+def paper17PPA004DecisionObjectionRiskSkeletonContract :
+    Paper17PhysicalPromotionAttemptTheoremContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    ppa004DecisionObjectionRiskClosed :=
+      PPA004DecisionObjectionRiskContract.closed
+        ppa004CanonicalDecisionObjectionRiskContract,
+    ppa005Paper16CertificateCompatibilityClosed := False,
+    ppa006StabilityAuditRollbackClosed := False,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed := False,
+    ppa008FinalConditionalCertificateClosed := False,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem paper17_ppa004_decision_objection_risk_skeleton_does_not_close_physical_promotion_attempt_theorem :
+    ¬ Paper17PhysicalPromotionAttemptTheoremContract.closed
+      paper17PPA004DecisionObjectionRiskSkeletonContract := by
+  unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
+  unfold paper17PPA004DecisionObjectionRiskSkeletonContract
+  simp [PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract]
 
 end FiniteCapacity

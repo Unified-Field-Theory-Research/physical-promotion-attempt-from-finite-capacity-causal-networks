@@ -2,18 +2,18 @@
 
 ## Active
 
-### PPA-004
+### PPA-005
 
-Define finite decision, objection, and residual-risk descriptors.
+Define Paper 16 certificate compatibility without acceptance or success.
 
 Acceptance criteria:
 
-- decision descriptors are finite and bounded
-- objection descriptors are finite and bounded
-- residual-risk descriptors are finite and bounded
-- descriptors state attempt bookkeeping only, not promotion decisions,
-  objection resolution, or risk discharge
-- Paper 16 certificate references remain reference-only
+- Paper 16 certificate compatibility descriptors are finite and bounded
+- review certificate references do not claim review acceptance
+- reproduction certificate references do not claim reproduction success
+- validation, benchmark, prediction, and falsification compatibility remains
+  conditional and non-successful
+- compatibility rows are auditable and rollback-compatible
 - Rust and Lean guards keep the full Paper 17 theorem open until later rungs
 
 ## Closed
@@ -23,3 +23,4 @@ Acceptance criteria:
   auditable, non-promoting interface rows.
 - `PPA-003`: Finite promotion eligibility, evidence-bundle, and review
   reference descriptors.
+- `PPA-004`: Finite decision, objection, and residual-risk descriptors.

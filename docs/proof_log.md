@@ -19,3 +19,7 @@
   promotion eligibility success, evidence sufficiency, review acceptance, or
   reproduction success.
 - Recorded `PPA-004` as the active next obligation.
+- Closed `PPA-004` by defining finite decision, objection, and residual-risk
+  descriptors as bounded, auditable labels that do not claim promotion
+  decisions, objection resolution, or risk discharge.
+- Recorded `PPA-005` as the active next obligation.

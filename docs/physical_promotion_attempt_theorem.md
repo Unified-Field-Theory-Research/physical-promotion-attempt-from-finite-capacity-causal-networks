@@ -22,10 +22,12 @@ realization, or unified-field promotion.
 - `PPA-003`: Finite promotion eligibility, evidence-bundle, and review
   reference descriptors without eligibility success, evidence sufficiency,
   review acceptance, or reproduction success.
+- `PPA-004`: Finite decision, objection, and residual-risk descriptors without
+  promotion decisions, objection resolution, or risk discharge.
 
 ## Active Rung
 
-- `PPA-004`: Define finite decision, objection, and residual-risk descriptors.
+- `PPA-005`: Paper 16 certificate compatibility without acceptance or success.
 
 Closed boundary for `PPA-002`:
 
@@ -59,7 +61,7 @@ Closed boundary for `PPA-003`:
 - all physical-promotion, validation, empirical-adequacy, physical-nature, and
   unified-field claims remain absent
 
-Required boundary for `PPA-004`:
+Closed boundary for `PPA-004`:
 
 - decision descriptors are finite labels, not promotion decisions
 - objection descriptors are finite labels, not adjudicated review outcomes
@@ -69,9 +71,17 @@ Required boundary for `PPA-004`:
 - no acceptance, success, validation, empirical adequacy, physical nature, or
   unified-field claim is introduced
 
+Required boundary for `PPA-005`:
+
+- Paper 16 certificate compatibility is finite and reference-only
+- review certificate references do not become review acceptance
+- reproduction certificate references do not become reproduction success
+- validation, benchmark, prediction, and falsification compatibility remains
+  conditional and non-successful
+- all compatibility rows remain bounded, auditable, and rollback-compatible
+
 ## Planned Rungs
 
-- `PPA-005`: Paper 16 certificate compatibility without acceptance or success
 - `PPA-006`: attempt stability, auditability, and rollback behavior
 - `PPA-007`: no-hidden-promotion, validation, nature, or unified-field import
   audit
