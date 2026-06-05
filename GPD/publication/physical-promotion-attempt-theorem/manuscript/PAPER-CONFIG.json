@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "paper": 17,
+  "slug": "physical-promotion-attempt-theorem",
+  "title": "Physical Promotion Attempt From Finite-Capacity Causal Networks",
+  "active_obligation": "PPA-002",
+  "closed_obligations": ["PPA-001"],
+  "status": "open_non_promoting_scaffold"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "paper": 17,
+  "title": "Physical Promotion Attempt From Finite-Capacity Causal Networks",
+  "artifacts": [
+    "physical_promotion_attempt_theorem.tex",
+    "PAPER-CONFIG.json",
+    "reproducibility-manifest.json"
+  ],
+  "claim_boundary": {
+    "physical_promotion_attempt_success_claim": false,
+    "physical_promotion_claim": false,
+    "physical_validation_claim": false,
+    "empirical_adequacy_claim": false,
+    "physical_nature_claim": false,
+    "unified_field_theory_claim": false
+  }
+}

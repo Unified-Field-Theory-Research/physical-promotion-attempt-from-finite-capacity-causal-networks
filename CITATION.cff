@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the associated Paper 17 workspace."
+title: "Physical Promotion Attempt From Finite-Capacity Causal Networks"
+authors:
+  - family-names: "Greenman"
+    given-names: "Abraham"
+repository-code: "https://github.com/Unified-Field-Theory-Research/physical-promotion-attempt-from-finite-capacity-causal-networks"
+license: "MIT AND CC-BY-4.0"
+date-released: "2026-06-05"

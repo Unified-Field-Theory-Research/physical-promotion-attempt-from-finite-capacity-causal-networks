@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "paper": 17,
+  "checks": [
+    "make test-fast",
+    "make lean-build"
+  ],
+  "formal_module": "FiniteCapacity.PhysicalPromotionAttempt",
+  "rust_test": "rust/cclab_accel/tests/physical_promotion_attempt.rs",
+  "non_promotion_boundary_required": true
+}

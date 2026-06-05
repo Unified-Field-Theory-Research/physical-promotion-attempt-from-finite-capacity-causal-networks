@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "project": "physical-promotion-attempt-from-finite-capacity-causal-networks",
+  "paper_number": 17,
+  "active_obligation": "PPA-002",
+  "theorem_prefix": "PPA",
+  "non_promotion_boundary_required": true,
+  "rust_guard_crate": "cclab_accel",
+  "lean_module": "FiniteCapacity.PhysicalPromotionAttempt"
+}
