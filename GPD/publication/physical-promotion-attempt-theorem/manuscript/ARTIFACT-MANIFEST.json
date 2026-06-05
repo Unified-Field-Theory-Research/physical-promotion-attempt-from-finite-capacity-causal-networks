@@ -4,6 +4,7 @@
   "title": "Physical Promotion Attempt From Finite-Capacity Causal Networks",
   "artifacts": [
     "physical_promotion_attempt_theorem.tex",
+    "physical_promotion_attempt_theorem.pdf",
     "PAPER-CONFIG.json",
     "reproducibility-manifest.json"
   ],

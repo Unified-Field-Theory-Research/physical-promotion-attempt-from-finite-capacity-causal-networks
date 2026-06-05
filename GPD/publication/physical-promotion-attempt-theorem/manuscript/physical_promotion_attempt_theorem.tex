@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage[margin=1in]{geometry}
+\usepackage{url}
 \usepackage{hyperref}
+\urlstyle{tt}
 
 \title{Physical Promotion Attempt From Finite-Capacity Causal Networks}
 \author{Abraham Greenman}
@@ -26,18 +28,19 @@ falsification success, physical nature realization, or a unified field theory.
 \section{Theorem Status}
 
 The Paper 17 theorem is closed as a conditional finite interface theorem. The
-formal Lean endpoint is
-\[
-\texttt{paper17\_ppa008\_final\_conditional\_certificate\_closes\_physical\_promotion\_attempt\_theorem}.
-\]
-The closing contract is
-\[
-\texttt{Paper17PhysicalPromotionAttemptTheoremContract.closed}.
-\]
+formal Lean endpoint is:
+\begin{quote}
+\texttt{paper17\_ppa008\_final\_conditional\_certificate\_closes}\\
+\texttt{physical\_promotion\_attempt\_theorem}
+\end{quote}
+The closing contract is:
+\begin{quote}
+\path{Paper17PhysicalPromotionAttemptTheoremContract.closed}
+\end{quote}
 
-The Rust audit surface is in \texttt{rust/cclab\_accel/src/lib.rs}, and the
+The Rust audit surface is in \path{rust/cclab_accel/src/lib.rs}, and the
 regression tests are in
-\texttt{rust/cclab\_accel/tests/physical\_promotion\_attempt.rs}. The
+\path{rust/cclab_accel/tests/physical_promotion_attempt.rs}. The
 required local checks are:
 \begin{verbatim}
 make test-fast
@@ -49,11 +52,11 @@ make lean-build
 Paper 17 starts after the frozen Paper 16 result:
 \begin{itemize}
 \item Paper 16 commit:
-\texttt{8bb266493b1c53c776b2d39a47140794edc8935f}.
+\path{8bb266493b1c53c776b2d39a47140794edc8935f}.
 \item Paper 16 formal endpoint:
-\texttt{Paper16ExternalReviewReproductionCertificatesTheoremContract.closed}.
+\path{Paper16ExternalReviewReproductionCertificatesTheoremContract.closed}.
 \item Paper 16 canonical proof:
-\texttt{paper16\_errc008\_final\_conditional\_certificate\_closes\_external\_review\_reproduction\_certificates\_theorem}.
+\path{paper16_errc008_final_conditional_certificate_closes_external_review_reproduction_certificates_theorem}.
 \end{itemize}
 
 The upstream result is consumed only as a conditional review/reproduction
@@ -149,7 +152,7 @@ hidden imports only; it does not promote or validate the attempt.
 
 PPA-008 assembles the final certificate. It consumes the closed contracts for
 PPA-001 through PPA-007 and closes
-\texttt{Paper17PhysicalPromotionAttemptTheoremContract.closed}. The closing
+\path{Paper17PhysicalPromotionAttemptTheoremContract.closed}. The closing
 certificate is conditional and interface-level. It preserves finite capacity,
 locality, bounded transfer, the hidden-import audit, and every non-promotion
 boundary.
@@ -157,16 +160,17 @@ boundary.
 \section{Proof}
 
 The proof is by finite contract assembly. For each rung, the Lean development
-defines a contract whose \texttt{closed} predicate is a finite conjunction of
+defines a contract whose \path{closed} predicate is a finite conjunction of
 its required fields. A canonical contract instantiates each field with the
 corresponding boundedness, compatibility, audit, or no-claim witness. Lean then
 proves each canonical rung closed by unfolding the contract and simplifying.
 
 The final theorem contract contains the closed status of PPA-001 through
-PPA-008 plus the non-promotion boundary fields. The theorem
-\[
-\texttt{paper17\_ppa008\_final\_conditional\_certificate\_closes\_physical\_promotion\_attempt\_theorem}
-\]
+PPA-008 plus the non-promotion boundary fields. The theorem:
+\begin{quote}
+\texttt{paper17\_ppa008\_final\_conditional\_certificate\_closes}\\
+\texttt{physical\_promotion\_attempt\_theorem}
+\end{quote}
 unfolds the final contract, unfolds the canonical rung witnesses, and closes
 the conjunction. Therefore the Paper 17 theorem is closed exactly as a
 conditional finite physical-promotion attempt interface theorem.
@@ -174,7 +178,7 @@ conditional finite physical-promotion attempt interface theorem.
 \section{Runtime Audit}
 
 The Rust guard mirrors the formal ladder. Each rung has a canonical runtime
-record and a \texttt{closes\_ppa00n} predicate. The final runtime certificate
+record and a \path{closes_ppa00n} predicate. The final runtime certificate
 requires:
 \begin{itemize}
 \item all descriptors are bounded,
@@ -222,10 +226,10 @@ make test-fast
 make lean-build
 \end{verbatim}
 The Lean proof is located at
-\texttt{GPD/formal/FiniteCapacity/PhysicalPromotionAttempt.lean}. The Rust
-guard is located at \texttt{rust/cclab\_accel/src/lib.rs}. The regression tests
+\path{GPD/formal/FiniteCapacity/PhysicalPromotionAttempt.lean}. The Rust
+guard is located at \path{rust/cclab_accel/src/lib.rs}. The regression tests
 are located at
-\texttt{rust/cclab\_accel/tests/physical\_promotion\_attempt.rs}.
+\path{rust/cclab_accel/tests/physical_promotion_attempt.rs}.
 
 \section{Conclusion}
 
