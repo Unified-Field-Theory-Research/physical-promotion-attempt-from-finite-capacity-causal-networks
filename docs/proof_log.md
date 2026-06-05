@@ -9,3 +9,8 @@
 - Added fail-closed Rust and Lean guards showing the initial skeleton does not
   close the physical promotion attempt theorem.
 - Recorded `PPA-002` as the active next obligation.
+- Closed `PPA-002` by defining finite physical-promotion attempt records as
+  bounded, auditable, non-promoting interface rows with finite attempt,
+  eligibility, evidence-bundle, review-certificate, decision, objection,
+  residual-risk, and audit-status descriptors.
+- Recorded `PPA-003` as the active next obligation.

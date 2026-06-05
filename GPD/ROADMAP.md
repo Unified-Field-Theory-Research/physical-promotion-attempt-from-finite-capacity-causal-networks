@@ -5,19 +5,18 @@
 - `PPA-001`: Upstream binding and claim-boundary scaffold through the frozen
   Paper 16 final conditional external review and reproduction certificates
   theorem.
+- `PPA-002`: Finite physical-promotion attempt records without importing
+  physical promotion success, physical validation, empirical adequacy, review
+  acceptance, reproduction success, benchmark success, prediction success,
+  falsification success, simulation-only promotion, or fit-only calibration.
 
 ## Active
 
-- `PPA-002`: Define finite physical-promotion attempt records without
-  importing physical promotion success, physical validation, empirical
-  adequacy, review acceptance, reproduction success, benchmark success,
-  prediction success, falsification success, simulation-only promotion, or
-  fit-only calibration.
+- `PPA-003`: Define finite promotion eligibility, evidence-bundle, and review
+  reference descriptors.
 
 ## Planned
 
-- `PPA-003`: Define finite promotion eligibility, evidence-bundle, and review
-  reference descriptors.
 - `PPA-004`: Define finite decision, objection, and residual-risk descriptors.
 - `PPA-005`: Define compatibility with Paper 16 review/reproduction
   certificates without claiming acceptance or success.

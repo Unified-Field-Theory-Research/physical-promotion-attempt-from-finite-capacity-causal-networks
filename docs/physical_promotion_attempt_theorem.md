@@ -17,12 +17,15 @@ realization, or unified-field promotion.
 
 - `PPA-001`: Upstream binding and claim-boundary scaffold through the frozen
   Paper 16 final conditional certificate.
+- `PPA-002`: Finite physical-promotion attempt records as bounded,
+  auditable, non-promoting interface rows.
 
 ## Active Rung
 
-- `PPA-002`: Define finite physical-promotion attempt records.
+- `PPA-003`: Define finite promotion eligibility, evidence-bundle, and review
+  reference descriptors.
 
-Required boundary for `PPA-002`:
+Closed boundary for `PPA-002`:
 
 - finite attempt identifiers
 - finite eligibility labels
@@ -42,10 +45,20 @@ Required boundary for `PPA-002`:
 - no simulation-only or fit-only shortcut
 - no unified field theory claim
 
+Required boundary for `PPA-003`:
+
+- eligibility descriptors are finite labels, not promotion findings
+- evidence-bundle descriptors are finite labels, not evidence sufficiency
+  claims
+- review references are finite references, not review acceptance claims
+- descriptor rows remain bounded, local, auditable, and rollback-compatible
+- Paper 16 certificate compatibility is referenced without reproduction
+  success, acceptance, or external validation success
+- all physical-promotion, validation, empirical-adequacy, physical-nature, and
+  unified-field claims remain absent
+
 ## Planned Rungs
 
-- `PPA-003`: finite promotion eligibility, evidence-bundle, and review
-  reference descriptors
 - `PPA-004`: finite decision, objection, and residual-risk descriptors
 - `PPA-005`: Paper 16 certificate compatibility without acceptance or success
 - `PPA-006`: attempt stability, auditability, and rollback behavior

@@ -153,6 +153,137 @@ theorem ppa001_canonical_upstream_binding_closed :
   simp
 
 /--
+`PPA-002` defines the finite physical-promotion attempt record as an
+interface row. The record is intentionally only a bounded audit object: it may
+name an attempt, eligibility label, evidence-bundle label, Paper 16 review
+certificate reference, decision label, objection label, residual-risk label,
+and audit-status descriptor, but it does not claim that the attempt succeeds.
+-/
+structure PPA002FinitePromotionAttemptRecordContract where
+  finiteAttemptIdentifier : Prop
+  finiteEligibilityLabel : Prop
+  finiteEvidenceBundleLabel : Prop
+  finiteReviewCertificateReference : Prop
+  finiteDecisionLabel : Prop
+  finiteObjectionLabel : Prop
+  finiteResidualRiskLabel : Prop
+  finiteAuditStatusDescriptor : Prop
+  boundedInterfaceRow : Prop
+  auditableInterfaceRow : Prop
+  paper16CertificateReferencedOnly : Prop
+  noPhysicalPromotionAttemptSuccessClaim : Prop
+  noPhysicalPromotionClaim : Prop
+  noPhysicalValidationClaim : Prop
+  noEmpiricalAdequacyClaim : Prop
+  noReviewAcceptanceClaim : Prop
+  noReproductionSuccessClaim : Prop
+  noBenchmarkSuccessClaim : Prop
+  noPredictionSuccessClaim : Prop
+  noFalsificationSuccessClaim : Prop
+  noSimulationOnlyPromotionShortcut : Prop
+  noFitOnlyCalibrationShortcut : Prop
+  noPhysicalNatureClaim : Prop
+  noUnifiedFieldTheoryClaim : Prop
+
+def PPA002FinitePromotionAttemptRecordContract.closed
+    (c : PPA002FinitePromotionAttemptRecordContract) : Prop :=
+  c.finiteAttemptIdentifier ∧
+  c.finiteEligibilityLabel ∧
+  c.finiteEvidenceBundleLabel ∧
+  c.finiteReviewCertificateReference ∧
+  c.finiteDecisionLabel ∧
+  c.finiteObjectionLabel ∧
+  c.finiteResidualRiskLabel ∧
+  c.finiteAuditStatusDescriptor ∧
+  c.boundedInterfaceRow ∧
+  c.auditableInterfaceRow ∧
+  c.paper16CertificateReferencedOnly ∧
+  c.noPhysicalPromotionAttemptSuccessClaim ∧
+  c.noPhysicalPromotionClaim ∧
+  c.noPhysicalValidationClaim ∧
+  c.noEmpiricalAdequacyClaim ∧
+  c.noReviewAcceptanceClaim ∧
+  c.noReproductionSuccessClaim ∧
+  c.noBenchmarkSuccessClaim ∧
+  c.noPredictionSuccessClaim ∧
+  c.noFalsificationSuccessClaim ∧
+  c.noSimulationOnlyPromotionShortcut ∧
+  c.noFitOnlyCalibrationShortcut ∧
+  c.noPhysicalNatureClaim ∧
+  c.noUnifiedFieldTheoryClaim
+
+theorem ppa002_finite_promotion_attempt_record_closed_from_fields
+    (c : PPA002FinitePromotionAttemptRecordContract)
+    (hAttempt : c.finiteAttemptIdentifier)
+    (hEligibility : c.finiteEligibilityLabel)
+    (hEvidence : c.finiteEvidenceBundleLabel)
+    (hReview : c.finiteReviewCertificateReference)
+    (hDecision : c.finiteDecisionLabel)
+    (hObjection : c.finiteObjectionLabel)
+    (hRisk : c.finiteResidualRiskLabel)
+    (hAudit : c.finiteAuditStatusDescriptor)
+    (hBounded : c.boundedInterfaceRow)
+    (hAuditable : c.auditableInterfaceRow)
+    (hPaper16ReferenceOnly : c.paper16CertificateReferencedOnly)
+    (hNoAttemptSuccess : c.noPhysicalPromotionAttemptSuccessClaim)
+    (hNoPromotion : c.noPhysicalPromotionClaim)
+    (hNoValidation : c.noPhysicalValidationClaim)
+    (hNoEmpirical : c.noEmpiricalAdequacyClaim)
+    (hNoReviewAcceptance : c.noReviewAcceptanceClaim)
+    (hNoReproduction : c.noReproductionSuccessClaim)
+    (hNoBenchmark : c.noBenchmarkSuccessClaim)
+    (hNoPrediction : c.noPredictionSuccessClaim)
+    (hNoFalsification : c.noFalsificationSuccessClaim)
+    (hNoSimulationShortcut : c.noSimulationOnlyPromotionShortcut)
+    (hNoFitShortcut : c.noFitOnlyCalibrationShortcut)
+    (hNoNature : c.noPhysicalNatureClaim)
+    (hNoUFT : c.noUnifiedFieldTheoryClaim) :
+    PPA002FinitePromotionAttemptRecordContract.closed c := by
+  unfold PPA002FinitePromotionAttemptRecordContract.closed
+  exact ⟨hAttempt, hEligibility, hEvidence, hReview, hDecision, hObjection,
+    hRisk, hAudit, hBounded, hAuditable, hPaper16ReferenceOnly,
+    hNoAttemptSuccess, hNoPromotion, hNoValidation, hNoEmpirical,
+    hNoReviewAcceptance, hNoReproduction, hNoBenchmark, hNoPrediction,
+    hNoFalsification, hNoSimulationShortcut, hNoFitShortcut, hNoNature,
+    hNoUFT⟩
+
+def ppa002CanonicalFinitePromotionAttemptRecordContract :
+    PPA002FinitePromotionAttemptRecordContract :=
+  {
+    finiteAttemptIdentifier := True,
+    finiteEligibilityLabel := True,
+    finiteEvidenceBundleLabel := True,
+    finiteReviewCertificateReference := True,
+    finiteDecisionLabel := True,
+    finiteObjectionLabel := True,
+    finiteResidualRiskLabel := True,
+    finiteAuditStatusDescriptor := True,
+    boundedInterfaceRow := True,
+    auditableInterfaceRow := True,
+    paper16CertificateReferencedOnly := True,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noSimulationOnlyPromotionShortcut := True,
+    noFitOnlyCalibrationShortcut := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem ppa002_canonical_finite_promotion_attempt_record_closed :
+    PPA002FinitePromotionAttemptRecordContract.closed
+      ppa002CanonicalFinitePromotionAttemptRecordContract := by
+  unfold PPA002FinitePromotionAttemptRecordContract.closed
+  unfold ppa002CanonicalFinitePromotionAttemptRecordContract
+  simp
+
+/--
 The full Paper 17 theorem stays closed only after a future final conditional
 certificate. `PPA-001` intentionally leaves that field false.
 -/
@@ -230,6 +361,41 @@ theorem paper17_ppa001_skeleton_does_not_close_physical_promotion_attempt_theore
       paper17InitialPPA001SkeletonContract := by
   unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
   unfold paper17InitialPPA001SkeletonContract
+  simp
+
+def paper17PPA002RecordSkeletonContract :
+    Paper17PhysicalPromotionAttemptTheoremContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed := False,
+    ppa004DecisionObjectionRiskClosed := False,
+    ppa005Paper16CertificateCompatibilityClosed := False,
+    ppa006StabilityAuditRollbackClosed := False,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed := False,
+    ppa008FinalConditionalCertificateClosed := False,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem paper17_ppa002_record_skeleton_does_not_close_physical_promotion_attempt_theorem :
+    ¬ Paper17PhysicalPromotionAttemptTheoremContract.closed
+      paper17PPA002RecordSkeletonContract := by
+  unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
+  unfold paper17PPA002RecordSkeletonContract
   simp
 
 end FiniteCapacity

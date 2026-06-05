@@ -22,6 +22,8 @@ pub const PAPER16_FINAL_CERTIFICATE: &str =
 
 pub const PAPER17_SKELETON_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa001-nonpromoting-skeleton";
+pub const PAPER17_PPA002_MARKER: &str = "paper17-physical-promotion-attempt-ppa002-finite-record";
+pub const MAX_ATTEMPT_DESCRIPTOR_LEN: usize = 128;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct UpstreamPaper {
@@ -154,6 +156,59 @@ impl Paper17ClaimBoundary {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct PPA002FinitePromotionAttemptRecord {
+    pub attempt_identifier: &'static str,
+    pub eligibility_label: &'static str,
+    pub evidence_bundle_label: &'static str,
+    pub review_certificate_reference: &'static str,
+    pub decision_label: &'static str,
+    pub objection_label: &'static str,
+    pub residual_risk_label: &'static str,
+    pub audit_status_descriptor: &'static str,
+    pub bounded_interface_row: bool,
+    pub auditable_interface_row: bool,
+    pub paper16_certificate_referenced_only: bool,
+    pub claim_boundary: Paper17ClaimBoundary,
+}
+
+impl PPA002FinitePromotionAttemptRecord {
+    pub const fn canonical() -> Self {
+        Self {
+            attempt_identifier: "ppa002-attempt-record",
+            eligibility_label: "eligibility-reference-pending",
+            evidence_bundle_label: "evidence-bundle-reference-pending",
+            review_certificate_reference: PAPER16_FINAL_CERTIFICATE,
+            decision_label: "decision-reference-pending",
+            objection_label: "objection-reference-pending",
+            residual_risk_label: "residual-risk-reference-pending",
+            audit_status_descriptor: "audit-open-nonpromoting",
+            bounded_interface_row: true,
+            auditable_interface_row: true,
+            paper16_certificate_referenced_only: true,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
+    pub fn closes_ppa002(&self) -> bool {
+        bounded_descriptor(self.attempt_identifier)
+            && bounded_descriptor(self.eligibility_label)
+            && bounded_descriptor(self.evidence_bundle_label)
+            && bounded_descriptor(self.review_certificate_reference)
+            && bounded_descriptor(self.decision_label)
+            && bounded_descriptor(self.objection_label)
+            && bounded_descriptor(self.residual_risk_label)
+            && bounded_descriptor(self.audit_status_descriptor)
+            && self.bounded_interface_row
+            && self.auditable_interface_row
+            && self.paper16_certificate_referenced_only
+            && self.review_certificate_reference == PAPER16_FINAL_CERTIFICATE
+            && self
+                .claim_boundary
+                .all_physical_promotion_and_success_claims_remain_false()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct PPA001UpstreamBinding {
     pub upstream_chain: &'static [UpstreamPaper],
     pub paper16_frozen_commit: &'static str,
@@ -256,6 +311,20 @@ impl Paper17SkeletonCertificate {
         }
     }
 
+    pub const fn ppa002_record_closed() -> Self {
+        Self {
+            ppa001_upstream_binding_closed: true,
+            ppa002_finite_promotion_attempt_record_closed: true,
+            ppa003_eligibility_evidence_review_closed: false,
+            ppa004_decision_objection_risk_closed: false,
+            ppa005_paper16_certificate_compatibility_closed: false,
+            ppa006_stability_audit_rollback_closed: false,
+            ppa007_no_hidden_promotion_validation_nature_audit_closed: false,
+            ppa008_final_conditional_certificate_closed: false,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
     pub fn closes_paper17_theorem(&self) -> bool {
         self.ppa001_upstream_binding_closed
             && self.ppa002_finite_promotion_attempt_record_closed
@@ -275,10 +344,22 @@ pub fn paper17_skeleton_marker() -> &'static str {
     PAPER17_SKELETON_MARKER
 }
 
+pub fn paper17_ppa002_marker() -> &'static str {
+    PAPER17_PPA002_MARKER
+}
+
 pub fn is_sha1_hex(value: &str) -> bool {
     value.len() == 40 && value.bytes().all(|byte| byte.is_ascii_hexdigit())
 }
 
+pub fn bounded_descriptor(value: &str) -> bool {
+    !value.is_empty()
+        && value.len() <= MAX_ATTEMPT_DESCRIPTOR_LEN
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'_' | b'.' | b':'))
+}
+
 pub fn active_obligation() -> &'static str {
-    "PPA-002"
+    "PPA-003"
 }

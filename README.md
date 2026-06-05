@@ -43,8 +43,10 @@ This repo is intentionally separate from the upstream theorem repositories:
 
 The current theorem package is open and non-promoting. `PPA-001` records the
 upstream binding and claim boundary through the closed Paper 16 result.
-`PPA-002` is the active next obligation: define finite physical-promotion
-attempt records as bounded, auditable, non-promoting interface rows.
+`PPA-002` defines finite physical-promotion attempt records as bounded,
+auditable, non-promoting interface rows. `PPA-003` is the active next
+obligation: define finite promotion eligibility, evidence-bundle, and review
+reference descriptors.
 
 This does not prove physical promotion attempt success, physical promotion,
 physical validation, empirical adequacy, review acceptance, reproduction

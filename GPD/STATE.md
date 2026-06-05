@@ -12,23 +12,26 @@ claim-boundary scaffold through the frozen Paper 16 result:
 - Paper 16 canonical proof:
   `paper16_errc008_final_conditional_certificate_closes_external_review_reproduction_certificates_theorem`
 
-The local Paper 17 physical promotion attempt theorem is not closed.
+`PPA-002` is closed as the finite physical-promotion attempt record rung. The
+local Paper 17 physical promotion attempt theorem is not closed.
 
 ## Active Obligation
 
-`PPA-002`: Define finite physical-promotion attempt records.
+`PPA-003`: Define finite promotion eligibility, evidence-bundle, and review
+reference descriptors.
 
-The record must remain bounded, auditable, and non-promoting. It must not
-import continuum quantum field theory, external Hilbert bundles, matter fields,
-gauge fields, physical particle excitations, physical Standard Model content,
-physical promotion success, physical validation, empirical adequacy, review
-acceptance, reproduction success, benchmark success, prediction success,
+The descriptors must remain bounded, auditable, and non-promoting. They must
+not import continuum quantum field theory, external Hilbert bundles, matter
+fields, gauge fields, physical particle excitations, physical Standard Model
+content, physical promotion success, physical validation, empirical adequacy,
+review acceptance, reproduction success, benchmark success, prediction success,
 falsification success, simulation-only promotion, fit-only calibration,
 physical nature realization, or a unified field theory.
 
 ## Closed Obligations
 
 - `PPA-001`: Upstream binding and claim-boundary scaffold.
+- `PPA-002`: Finite physical-promotion attempt records.
 
 ## Claim Boundary
 

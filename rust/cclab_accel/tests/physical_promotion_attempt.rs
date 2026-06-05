@@ -2,7 +2,8 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use cclab_accel::{
-    active_obligation, paper17_skeleton_marker, PPA001UpstreamBinding, Paper17SkeletonCertificate,
+    active_obligation, bounded_descriptor, paper17_ppa002_marker, paper17_skeleton_marker,
+    PPA001UpstreamBinding, PPA002FinitePromotionAttemptRecord, Paper17SkeletonCertificate,
     PAPER16_FINAL_CERTIFICATE, PAPER16_FORMAL_ENDPOINT, PAPER16_FROZEN_COMMIT,
 };
 
@@ -61,6 +62,42 @@ fn initial_skeleton_keeps_paper17_theorem_open() {
 }
 
 #[test]
+fn ppa002_defines_bounded_nonpromoting_attempt_record() {
+    let record = PPA002FinitePromotionAttemptRecord::canonical();
+    assert!(record.closes_ppa002());
+    assert!(bounded_descriptor(record.attempt_identifier));
+    assert!(bounded_descriptor(record.eligibility_label));
+    assert!(bounded_descriptor(record.evidence_bundle_label));
+    assert!(bounded_descriptor(record.review_certificate_reference));
+    assert!(bounded_descriptor(record.decision_label));
+    assert!(bounded_descriptor(record.objection_label));
+    assert!(bounded_descriptor(record.residual_risk_label));
+    assert!(bounded_descriptor(record.audit_status_descriptor));
+    assert_eq!(
+        record.review_certificate_reference,
+        PAPER16_FINAL_CERTIFICATE
+    );
+    assert!(record.paper16_certificate_referenced_only);
+    assert!(record
+        .claim_boundary
+        .all_physical_promotion_and_success_claims_remain_false());
+    assert_eq!(
+        paper17_ppa002_marker(),
+        "paper17-physical-promotion-attempt-ppa002-finite-record"
+    );
+}
+
+#[test]
+fn ppa002_skeleton_closes_record_rung_but_not_theorem() {
+    let skeleton = Paper17SkeletonCertificate::ppa002_record_closed();
+    assert!(skeleton.ppa001_upstream_binding_closed);
+    assert!(skeleton.ppa002_finite_promotion_attempt_record_closed);
+    assert!(!skeleton.ppa003_eligibility_evidence_review_closed);
+    assert!(!skeleton.ppa008_final_conditional_certificate_closed);
+    assert!(!skeleton.closes_paper17_theorem());
+}
+
+#[test]
 fn upstream_json_records_paper16_certificate_and_nonpromotion() {
     let upstream = read_repo_file("UPSTREAM-PAPERS.json");
     assert!(upstream.contains(PAPER16_FROZEN_COMMIT));
@@ -75,21 +112,22 @@ fn upstream_json_records_paper16_certificate_and_nonpromotion() {
 }
 
 #[test]
-fn docs_keep_ppa002_active_and_promotion_claims_false() {
+fn docs_keep_ppa003_active_and_promotion_claims_false() {
     let state = read_repo_file("GPD/state.json");
     let state_md = read_repo_file("GPD/STATE.md");
     let theorem = read_repo_file("docs/physical_promotion_attempt_theorem.md");
 
-    assert_eq!(active_obligation(), "PPA-002");
-    assert!(state.contains("\"active_obligation\": \"PPA-002\""));
+    assert_eq!(active_obligation(), "PPA-003");
+    assert!(state.contains("\"active_obligation\": \"PPA-003\""));
+    assert!(state.contains("\"ppa002_finite_promotion_attempt_record_closed\": true"));
     assert!(state.contains("\"physical_promotion_attempt_theorem_closed\": false"));
     assert!(state.contains("\"physical_promotion_attempt_success_claim\": false"));
     assert!(state.contains("\"physical_promotion_claim\": false"));
     assert!(state.contains("\"physical_validation_claim\": false"));
     assert!(state.contains("\"empirical_adequacy_claim\": false"));
     assert!(state.contains("\"physical_nature_claim\": false"));
-    assert!(state_md.contains("The local Paper 17 physical promotion attempt theorem is not"));
-    assert!(theorem.contains("PPA-002"));
+    assert!(state_md.contains("physical promotion attempt theorem is not closed"));
+    assert!(theorem.contains("PPA-003"));
     assert!(theorem.contains("no unified field theory claim"));
 }
 

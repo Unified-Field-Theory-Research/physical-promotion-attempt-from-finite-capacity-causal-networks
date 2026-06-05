@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
   "paper": 17,
-  "phase": 1,
-  "phase_name": "Upstream Binding And Claim Boundary",
-  "active_obligation": "PPA-002",
+  "phase": 2,
+  "phase_name": "Finite Physical-Promotion Attempt Records",
+  "active_obligation": "PPA-003",
   "closed_obligations": [
-    "PPA-001"
+    "PPA-001",
+    "PPA-002"
   ],
   "upstream_frozen_through_paper16": true,
   "paper16_frozen_commit": "8bb266493b1c53c776b2d39a47140794edc8935f",
@@ -13,6 +14,13 @@
   "paper16_canonical_proof": "paper16_errc008_final_conditional_certificate_closes_external_review_reproduction_certificates_theorem",
   "paper17_claims": {
     "ppa001_upstream_binding_closed": true,
+    "ppa002_finite_promotion_attempt_record_closed": true,
+    "ppa003_eligibility_evidence_review_closed": false,
+    "ppa004_decision_objection_risk_closed": false,
+    "ppa005_paper16_certificate_compatibility_closed": false,
+    "ppa006_stability_audit_rollback_closed": false,
+    "ppa007_no_hidden_promotion_validation_nature_audit_closed": false,
+    "ppa008_final_conditional_certificate_closed": false,
     "physical_promotion_attempt_theorem_closed": false,
     "physical_promotion_attempt_success_claim": false,
     "physical_promotion_claim": false,
@@ -37,5 +45,5 @@
     "physical_nature_claim": false,
     "unified_field_theory_claim": false
   },
-  "next_move": "PPA-002: define finite physical-promotion attempt records as bounded, auditable, non-promoting interface rows."
+  "next_move": "PPA-003: define finite promotion eligibility, evidence-bundle, and review reference descriptors."
 }
