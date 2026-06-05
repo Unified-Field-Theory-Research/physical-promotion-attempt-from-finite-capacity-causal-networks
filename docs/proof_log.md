@@ -40,3 +40,8 @@
   simulation-only promotion, fit-only calibration, physical nature realization,
   and unified-field-theory imports.
 - Recorded `PPA-008` as the active next obligation.
+- Closed `PPA-008` by assembling the final conditional certificate:
+  `paper17_ppa008_final_conditional_certificate_closes_physical_promotion_attempt_theorem`.
+- Closed the Paper 17 physical promotion attempt theorem as a conditional
+  finite interface theorem while preserving all non-promotion, non-validation,
+  non-success, non-nature, and non-unified-field boundaries.

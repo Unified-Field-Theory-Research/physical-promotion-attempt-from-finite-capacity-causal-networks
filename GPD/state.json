@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "paper": 17,
-  "phase": 7,
-  "phase_name": "No Hidden Promotion Validation Nature Audit",
-  "active_obligation": "PPA-008",
+  "phase": 8,
+  "phase_name": "Final Conditional Certificate",
+  "active_obligation": "COMPLETE",
   "closed_obligations": [
     "PPA-001",
     "PPA-002",
@@ -11,7 +11,8 @@
     "PPA-004",
     "PPA-005",
     "PPA-006",
-    "PPA-007"
+    "PPA-007",
+    "PPA-008"
   ],
   "upstream_frozen_through_paper16": true,
   "paper16_frozen_commit": "8bb266493b1c53c776b2d39a47140794edc8935f",
@@ -25,8 +26,8 @@
     "ppa005_paper16_certificate_compatibility_closed": true,
     "ppa006_stability_audit_rollback_closed": true,
     "ppa007_no_hidden_promotion_validation_nature_audit_closed": true,
-    "ppa008_final_conditional_certificate_closed": false,
-    "physical_promotion_attempt_theorem_closed": false,
+    "ppa008_final_conditional_certificate_closed": true,
+    "physical_promotion_attempt_theorem_closed": true,
     "physical_promotion_attempt_success_claim": false,
     "physical_promotion_claim": false,
     "physical_validation_claim": false,
@@ -50,5 +51,5 @@
     "physical_nature_claim": false,
     "unified_field_theory_claim": false
   },
-  "next_move": "PPA-008: assemble the final conditional physical promotion attempt theorem."
+  "next_move": "Create the self-contained paper from the closed conditional theorem certificate."
 }

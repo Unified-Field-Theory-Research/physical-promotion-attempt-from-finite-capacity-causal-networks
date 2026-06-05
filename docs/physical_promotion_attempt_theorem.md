@@ -33,10 +33,12 @@ realization, or unified-field promotion.
 - `PPA-007`: No-hidden-promotion, validation, nature, or unified-field import
   audit without closing promotion, validation, empirical adequacy, physical
   nature, or unified-field claims.
+- `PPA-008`: Final conditional certificate closing the Paper 17 physical
+  promotion attempt interface theorem.
 
 ## Active Rung
 
-- `PPA-008`: Final conditional certificate.
+None. The theorem is closed as a conditional finite interface theorem.
 
 Closed boundary for `PPA-002`:
 
@@ -110,7 +112,7 @@ Closed boundary for `PPA-007`:
   imports
 - the audit closes only hidden-import absence, not physical promotion
 
-Required boundary for `PPA-008`:
+Closed boundary for `PPA-008`:
 
 - all rungs `PPA-001` through `PPA-007` are closed
 - the final certificate closes only the conditional physical-promotion attempt
@@ -124,8 +126,7 @@ Required boundary for `PPA-008`:
 
 ## Planned Rungs
 
-None after `PPA-008`; the theorem remains open until the final conditional
-certificate is assembled.
+None.
 
 ## Residual Risk
 

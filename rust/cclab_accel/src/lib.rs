@@ -32,6 +32,8 @@ pub const PAPER17_PPA006_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa006-stability-audit-rollback";
 pub const PAPER17_PPA007_MARKER: &str =
     "paper17-physical-promotion-attempt-ppa007-no-hidden-imports";
+pub const PAPER17_PPA008_MARKER: &str =
+    "paper17-physical-promotion-attempt-ppa008-final-conditional-certificate";
 pub const MAX_ATTEMPT_DESCRIPTOR_LEN: usize = 128;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -521,6 +523,57 @@ impl PPA007NoHiddenImportAudit {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct PPA008FinalConditionalCertificate {
+    pub final_certificate_descriptor: &'static str,
+    pub conditional_interface_theorem_only: bool,
+    pub preserves_finite_capacity: bool,
+    pub preserves_locality: bool,
+    pub preserves_bounded_transfer: bool,
+    pub preserves_no_hidden_import_audit: bool,
+    pub claim_boundary: Paper17ClaimBoundary,
+}
+
+impl PPA008FinalConditionalCertificate {
+    pub const fn canonical() -> Self {
+        Self {
+            final_certificate_descriptor: "ppa008-final-conditional-certificate",
+            conditional_interface_theorem_only: true,
+            preserves_finite_capacity: true,
+            preserves_locality: true,
+            preserves_bounded_transfer: true,
+            preserves_no_hidden_import_audit: true,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
+    pub fn closes_ppa008(
+        &self,
+        attempt_record: &PPA002FinitePromotionAttemptRecord,
+        descriptors: &PPA003EligibilityEvidenceReviewDescriptors,
+        decision_row: &PPA004DecisionObjectionRiskDescriptors,
+        compatibility: &PPA005Paper16CertificateCompatibility,
+        rollback: &PPA006StabilityAuditRollback,
+        hidden_import_audit: &PPA007NoHiddenImportAudit,
+    ) -> bool {
+        hidden_import_audit.closes_ppa007(
+            attempt_record,
+            descriptors,
+            decision_row,
+            compatibility,
+            rollback,
+        ) && bounded_descriptor(self.final_certificate_descriptor)
+            && self.conditional_interface_theorem_only
+            && self.preserves_finite_capacity
+            && self.preserves_locality
+            && self.preserves_bounded_transfer
+            && self.preserves_no_hidden_import_audit
+            && self
+                .claim_boundary
+                .all_physical_promotion_and_success_claims_remain_false()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct PPA001UpstreamBinding {
     pub upstream_chain: &'static [UpstreamPaper],
     pub paper16_frozen_commit: &'static str,
@@ -707,6 +760,20 @@ impl Paper17SkeletonCertificate {
         }
     }
 
+    pub const fn final_conditional_certificate_closed() -> Self {
+        Self {
+            ppa001_upstream_binding_closed: true,
+            ppa002_finite_promotion_attempt_record_closed: true,
+            ppa003_eligibility_evidence_review_closed: true,
+            ppa004_decision_objection_risk_closed: true,
+            ppa005_paper16_certificate_compatibility_closed: true,
+            ppa006_stability_audit_rollback_closed: true,
+            ppa007_no_hidden_promotion_validation_nature_audit_closed: true,
+            ppa008_final_conditional_certificate_closed: true,
+            claim_boundary: Paper17ClaimBoundary::non_promoting(),
+        }
+    }
+
     pub fn closes_paper17_theorem(&self) -> bool {
         self.ppa001_upstream_binding_closed
             && self.ppa002_finite_promotion_attempt_record_closed
@@ -750,6 +817,10 @@ pub fn paper17_ppa007_marker() -> &'static str {
     PAPER17_PPA007_MARKER
 }
 
+pub fn paper17_ppa008_marker() -> &'static str {
+    PAPER17_PPA008_MARKER
+}
+
 pub fn is_sha1_hex(value: &str) -> bool {
     value.len() == 40 && value.bytes().all(|byte| byte.is_ascii_hexdigit())
 }
@@ -763,5 +834,5 @@ pub fn bounded_descriptor(value: &str) -> bool {
 }
 
 pub fn active_obligation() -> &'static str {
-    "PPA-008"
+    "COMPLETE"
 }

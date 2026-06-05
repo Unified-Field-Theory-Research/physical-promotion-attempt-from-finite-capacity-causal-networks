@@ -24,10 +24,12 @@
 - `PPA-007`: No-hidden-promotion, validation, nature, or unified-field-theory
   import audit without closing promotion, validation, empirical adequacy,
   physical nature, or unified-field claims.
+- `PPA-008`: Final conditional physical promotion attempt theorem certificate.
 
 ## Active
 
-- `PPA-008`: Assemble the final conditional physical promotion attempt theorem.
+None. The Paper 17 theorem is closed as a conditional finite interface
+theorem.
 
 ## Planned
 

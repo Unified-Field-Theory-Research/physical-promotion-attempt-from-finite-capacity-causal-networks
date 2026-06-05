@@ -7,9 +7,9 @@ The repository begins with `PPA-001` closed: upstream binding and
 claim-boundary preservation through the frozen Paper 16 external review and
 reproduction certificates theorem.
 
-The local theorem is not closed. The active next obligation is `PPA-002`:
-define finite physical-promotion attempt records as bounded, auditable,
-non-promoting interface rows.
+The local theorem is closed as a conditional finite interface theorem through
+`PPA-008`: final conditional certificate. There is no active theorem-ladder
+obligation.
 
 ## Claim Boundary
 

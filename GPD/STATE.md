@@ -2,7 +2,8 @@
 
 ## Current Status
 
-Paper 17 is open. `PPA-001` is closed as an upstream-binding and
+Paper 17 is closed as a conditional finite interface theorem. `PPA-001` is
+closed as an upstream-binding and
 claim-boundary scaffold through the frozen Paper 16 result:
 
 - Paper 16 commit:
@@ -18,14 +19,15 @@ review-reference descriptor rung. `PPA-004` is closed as the finite decision,
 objection, and residual-risk descriptor rung. `PPA-005` is closed as the Paper
 16 certificate compatibility rung. `PPA-006` is closed as the stability,
 audit, and rollback behavior rung. `PPA-007` is closed as the hidden-import
-audit rung. The local Paper 17 physical promotion attempt theorem is not
-closed.
+audit rung. `PPA-008` is closed as the final conditional certificate. The
+local Paper 17 physical promotion attempt theorem is closed as a conditional
+finite interface theorem.
 
 ## Active Obligation
 
-`PPA-008`: Assemble the final conditional physical promotion attempt theorem.
+None.
 
-The final certificate must remain conditional and non-promoting. It must not
+The closed final certificate remains conditional and non-promoting. It does not
 import continuum quantum field theory, external Hilbert bundles, matter fields,
 gauge fields, physical particle excitations, physical Standard Model content,
 physical promotion success, physical validation, empirical adequacy, review
@@ -45,12 +47,12 @@ field theory.
 - `PPA-006`: Attempt stability, auditability, and rollback behavior.
 - `PPA-007`: No-hidden-promotion, validation, nature, or unified-field import
   audit.
+- `PPA-008`: Final conditional certificate.
 
 ## Claim Boundary
 
 The following claims remain false in this repository:
 
-- physical promotion attempt theorem closed
 - physical promotion attempt success
 - physical promotion
 - physical validation

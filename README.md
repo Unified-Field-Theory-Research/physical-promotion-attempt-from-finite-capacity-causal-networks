@@ -41,8 +41,9 @@ This repo is intentionally separate from the upstream theorem repositories:
 - Paper 16 external review and reproduction certificates repo: `https://github.com/Unified-Field-Theory-Research/external-review-and-reproduction-certificates-from-finite-capacity-causal-networks`
 - Upstream binding file: `UPSTREAM-PAPERS.json`
 
-The current theorem package is open and non-promoting. `PPA-001` records the
-upstream binding and claim boundary through the closed Paper 16 result.
+The theorem package is closed as a conditional finite interface theorem and
+remains non-promoting. `PPA-001` records the upstream binding and claim
+boundary through the closed Paper 16 result.
 `PPA-002` defines finite physical-promotion attempt records as bounded,
 auditable, non-promoting interface rows. `PPA-003` defines finite promotion
 eligibility, evidence-bundle, and review reference descriptors. `PPA-004`
@@ -50,8 +51,10 @@ defines finite decision, objection, and residual-risk descriptors. `PPA-005`
 defines Paper 16 certificate compatibility without acceptance or success.
 `PPA-006` defines attempt stability, auditability, and rollback behavior.
 `PPA-007` audits for hidden physical-promotion, validation, nature, or
-unified-field-theory imports. `PPA-008` is the active next obligation:
-assemble the final conditional physical promotion attempt theorem certificate.
+unified-field-theory imports. `PPA-008` assembles the final conditional
+physical promotion attempt theorem certificate.
+
+The theorem package is closed as a conditional finite interface theorem only.
 
 This does not prove physical promotion attempt success, physical promotion,
 physical validation, empirical adequacy, review acceptance, reproduction

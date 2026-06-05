@@ -2,18 +2,8 @@
 
 ## Active
 
-### PPA-008
-
-Assemble the final conditional physical promotion attempt theorem certificate.
-
-Acceptance criteria:
-
-- `PPA-001` through `PPA-007` are closed
-- the final certificate closes the Paper 17 theorem contract
-- every forbidden physical-promotion, validation, empirical-adequacy,
-  success, physical-nature, and unified-field claim remains false
-- Rust and Lean guards close the theorem only as a conditional
-  physical-promotion attempt interface theorem
+None. The Paper 17 physical promotion attempt theorem is closed as a
+conditional finite interface theorem.
 
 ## Closed
 
@@ -27,3 +17,4 @@ Acceptance criteria:
 - `PPA-006`: Attempt stability, auditability, and rollback behavior.
 - `PPA-007`: No-hidden-promotion, validation, nature, or unified-field import
   audit.
+- `PPA-008`: Final conditional certificate.

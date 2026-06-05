@@ -1013,8 +1013,164 @@ theorem ppa007_canonical_no_hidden_promotion_validation_nature_audit_closed :
     ppa006CanonicalStabilityAuditRollbackContract]
 
 /--
-The full Paper 17 theorem stays closed only after a future final conditional
-certificate. `PPA-001` intentionally leaves that field false.
+`PPA-008` assembles the final conditional certificate. It closes the Paper 17
+physical-promotion attempt interface theorem only as a finite conditional
+interface theorem; it does not close promotion success, validation, empirical
+adequacy, physical nature, or unified-field claims.
+-/
+structure PPA008FinalConditionalCertificateContract where
+  ppa001UpstreamBindingClosed : Prop
+  ppa002FinitePromotionAttemptRecordClosed : Prop
+  ppa003EligibilityEvidenceReviewClosed : Prop
+  ppa004DecisionObjectionRiskClosed : Prop
+  ppa005Paper16CertificateCompatibilityClosed : Prop
+  ppa006StabilityAuditRollbackClosed : Prop
+  ppa007NoHiddenPromotionValidationNatureAuditClosed : Prop
+  finiteFinalCertificateDescriptor : Prop
+  finalCertificateIsConditionalInterfaceTheorem : Prop
+  finalCertificatePreservesFiniteCapacity : Prop
+  finalCertificatePreservesLocality : Prop
+  finalCertificatePreservesBoundedTransfer : Prop
+  finalCertificatePreservesNoHiddenImportAudit : Prop
+  noPhysicalPromotionAttemptSuccessClaim : Prop
+  noPhysicalPromotionClaim : Prop
+  noPhysicalValidationClaim : Prop
+  noEmpiricalAdequacyClaim : Prop
+  noReviewAcceptanceClaim : Prop
+  noReproductionSuccessClaim : Prop
+  noBenchmarkSuccessClaim : Prop
+  noPredictionSuccessClaim : Prop
+  noFalsificationSuccessClaim : Prop
+  noPhysicalNatureClaim : Prop
+  noUnifiedFieldTheoryClaim : Prop
+
+def PPA008FinalConditionalCertificateContract.closed
+    (c : PPA008FinalConditionalCertificateContract) : Prop :=
+  c.ppa001UpstreamBindingClosed ∧
+  c.ppa002FinitePromotionAttemptRecordClosed ∧
+  c.ppa003EligibilityEvidenceReviewClosed ∧
+  c.ppa004DecisionObjectionRiskClosed ∧
+  c.ppa005Paper16CertificateCompatibilityClosed ∧
+  c.ppa006StabilityAuditRollbackClosed ∧
+  c.ppa007NoHiddenPromotionValidationNatureAuditClosed ∧
+  c.finiteFinalCertificateDescriptor ∧
+  c.finalCertificateIsConditionalInterfaceTheorem ∧
+  c.finalCertificatePreservesFiniteCapacity ∧
+  c.finalCertificatePreservesLocality ∧
+  c.finalCertificatePreservesBoundedTransfer ∧
+  c.finalCertificatePreservesNoHiddenImportAudit ∧
+  c.noPhysicalPromotionAttemptSuccessClaim ∧
+  c.noPhysicalPromotionClaim ∧
+  c.noPhysicalValidationClaim ∧
+  c.noEmpiricalAdequacyClaim ∧
+  c.noReviewAcceptanceClaim ∧
+  c.noReproductionSuccessClaim ∧
+  c.noBenchmarkSuccessClaim ∧
+  c.noPredictionSuccessClaim ∧
+  c.noFalsificationSuccessClaim ∧
+  c.noPhysicalNatureClaim ∧
+  c.noUnifiedFieldTheoryClaim
+
+theorem ppa008_final_conditional_certificate_closed_from_fields
+    (c : PPA008FinalConditionalCertificateContract)
+    (hPPA001 : c.ppa001UpstreamBindingClosed)
+    (hPPA002 : c.ppa002FinitePromotionAttemptRecordClosed)
+    (hPPA003 : c.ppa003EligibilityEvidenceReviewClosed)
+    (hPPA004 : c.ppa004DecisionObjectionRiskClosed)
+    (hPPA005 : c.ppa005Paper16CertificateCompatibilityClosed)
+    (hPPA006 : c.ppa006StabilityAuditRollbackClosed)
+    (hPPA007 : c.ppa007NoHiddenPromotionValidationNatureAuditClosed)
+    (hFiniteCertificate : c.finiteFinalCertificateDescriptor)
+    (hConditional : c.finalCertificateIsConditionalInterfaceTheorem)
+    (hFiniteCapacity : c.finalCertificatePreservesFiniteCapacity)
+    (hLocality : c.finalCertificatePreservesLocality)
+    (hBoundedTransfer : c.finalCertificatePreservesBoundedTransfer)
+    (hNoHidden : c.finalCertificatePreservesNoHiddenImportAudit)
+    (hNoAttemptSuccess : c.noPhysicalPromotionAttemptSuccessClaim)
+    (hNoPromotion : c.noPhysicalPromotionClaim)
+    (hNoValidation : c.noPhysicalValidationClaim)
+    (hNoEmpirical : c.noEmpiricalAdequacyClaim)
+    (hNoReviewAcceptance : c.noReviewAcceptanceClaim)
+    (hNoReproduction : c.noReproductionSuccessClaim)
+    (hNoBenchmark : c.noBenchmarkSuccessClaim)
+    (hNoPrediction : c.noPredictionSuccessClaim)
+    (hNoFalsification : c.noFalsificationSuccessClaim)
+    (hNoNature : c.noPhysicalNatureClaim)
+    (hNoUFT : c.noUnifiedFieldTheoryClaim) :
+    PPA008FinalConditionalCertificateContract.closed c := by
+  unfold PPA008FinalConditionalCertificateContract.closed
+  exact ⟨hPPA001, hPPA002, hPPA003, hPPA004, hPPA005, hPPA006, hPPA007,
+    hFiniteCertificate, hConditional, hFiniteCapacity, hLocality,
+    hBoundedTransfer, hNoHidden, hNoAttemptSuccess, hNoPromotion,
+    hNoValidation, hNoEmpirical, hNoReviewAcceptance, hNoReproduction,
+    hNoBenchmark, hNoPrediction, hNoFalsification, hNoNature, hNoUFT⟩
+
+def ppa008CanonicalFinalConditionalCertificateContract :
+    PPA008FinalConditionalCertificateContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    ppa004DecisionObjectionRiskClosed :=
+      PPA004DecisionObjectionRiskContract.closed
+        ppa004CanonicalDecisionObjectionRiskContract,
+    ppa005Paper16CertificateCompatibilityClosed :=
+      PPA005Paper16CertificateCompatibilityContract.closed
+        ppa005CanonicalPaper16CertificateCompatibilityContract,
+    ppa006StabilityAuditRollbackClosed :=
+      PPA006StabilityAuditRollbackContract.closed
+        ppa006CanonicalStabilityAuditRollbackContract,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed :=
+      PPA007NoHiddenPromotionValidationNatureAuditContract.closed
+        ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract,
+    finiteFinalCertificateDescriptor := True,
+    finalCertificateIsConditionalInterfaceTheorem := True,
+    finalCertificatePreservesFiniteCapacity := True,
+    finalCertificatePreservesLocality := True,
+    finalCertificatePreservesBoundedTransfer := True,
+    finalCertificatePreservesNoHiddenImportAudit := True,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem ppa008_canonical_final_conditional_certificate_closed :
+    PPA008FinalConditionalCertificateContract.closed
+      ppa008CanonicalFinalConditionalCertificateContract := by
+  unfold PPA008FinalConditionalCertificateContract.closed
+  unfold ppa008CanonicalFinalConditionalCertificateContract
+  simp [PPA001UpstreamBindingContract.closed,
+    ppa001CanonicalUpstreamBindingContract,
+    PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract,
+    PPA005Paper16CertificateCompatibilityContract.closed,
+    ppa005CanonicalPaper16CertificateCompatibilityContract,
+    PPA006StabilityAuditRollbackContract.closed,
+    ppa006CanonicalStabilityAuditRollbackContract,
+    PPA007NoHiddenPromotionValidationNatureAuditContract.closed,
+    ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract]
+
+/--
+The staged Paper 17 theorem contract closes only when all rungs through the
+final conditional certificate are closed.
 -/
 structure Paper17PhysicalPromotionAttemptTheoremContract where
   ppa001UpstreamBindingClosed : Prop
@@ -1366,5 +1522,67 @@ theorem paper17_ppa007_no_hidden_import_audit_skeleton_does_not_close_physical_p
     ppa006CanonicalStabilityAuditRollbackContract,
     PPA007NoHiddenPromotionValidationNatureAuditContract.closed,
     ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract]
+
+def paper17FinalConditionalCertificateContract :
+    Paper17PhysicalPromotionAttemptTheoremContract :=
+  {
+    ppa001UpstreamBindingClosed :=
+      PPA001UpstreamBindingContract.closed
+        ppa001CanonicalUpstreamBindingContract,
+    ppa002FinitePromotionAttemptRecordClosed :=
+      PPA002FinitePromotionAttemptRecordContract.closed
+        ppa002CanonicalFinitePromotionAttemptRecordContract,
+    ppa003EligibilityEvidenceReviewClosed :=
+      PPA003EligibilityEvidenceReviewContract.closed
+        ppa003CanonicalEligibilityEvidenceReviewContract,
+    ppa004DecisionObjectionRiskClosed :=
+      PPA004DecisionObjectionRiskContract.closed
+        ppa004CanonicalDecisionObjectionRiskContract,
+    ppa005Paper16CertificateCompatibilityClosed :=
+      PPA005Paper16CertificateCompatibilityContract.closed
+        ppa005CanonicalPaper16CertificateCompatibilityContract,
+    ppa006StabilityAuditRollbackClosed :=
+      PPA006StabilityAuditRollbackContract.closed
+        ppa006CanonicalStabilityAuditRollbackContract,
+    ppa007NoHiddenPromotionValidationNatureAuditClosed :=
+      PPA007NoHiddenPromotionValidationNatureAuditContract.closed
+        ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract,
+    ppa008FinalConditionalCertificateClosed :=
+      PPA008FinalConditionalCertificateContract.closed
+        ppa008CanonicalFinalConditionalCertificateContract,
+    noPhysicalPromotionAttemptSuccessClaim := True,
+    noPhysicalPromotionClaim := True,
+    noPhysicalValidationClaim := True,
+    noEmpiricalAdequacyClaim := True,
+    noReviewAcceptanceClaim := True,
+    noReproductionSuccessClaim := True,
+    noBenchmarkSuccessClaim := True,
+    noPredictionSuccessClaim := True,
+    noFalsificationSuccessClaim := True,
+    noPhysicalNatureClaim := True,
+    noUnifiedFieldTheoryClaim := True
+  }
+
+theorem paper17_ppa008_final_conditional_certificate_closes_physical_promotion_attempt_theorem :
+    Paper17PhysicalPromotionAttemptTheoremContract.closed
+      paper17FinalConditionalCertificateContract := by
+  unfold Paper17PhysicalPromotionAttemptTheoremContract.closed
+  unfold paper17FinalConditionalCertificateContract
+  simp [PPA001UpstreamBindingContract.closed,
+    ppa001CanonicalUpstreamBindingContract,
+    PPA002FinitePromotionAttemptRecordContract.closed,
+    ppa002CanonicalFinitePromotionAttemptRecordContract,
+    PPA003EligibilityEvidenceReviewContract.closed,
+    ppa003CanonicalEligibilityEvidenceReviewContract,
+    PPA004DecisionObjectionRiskContract.closed,
+    ppa004CanonicalDecisionObjectionRiskContract,
+    PPA005Paper16CertificateCompatibilityContract.closed,
+    ppa005CanonicalPaper16CertificateCompatibilityContract,
+    PPA006StabilityAuditRollbackContract.closed,
+    ppa006CanonicalStabilityAuditRollbackContract,
+    PPA007NoHiddenPromotionValidationNatureAuditContract.closed,
+    ppa007CanonicalNoHiddenPromotionValidationNatureAuditContract,
+    PPA008FinalConditionalCertificateContract.closed,
+    ppa008CanonicalFinalConditionalCertificateContract]
 
 end FiniteCapacity
